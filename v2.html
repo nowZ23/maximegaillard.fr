@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="fr" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maxime Gaillard · Développeur & conseiller</title>
+<meta name="description" content="Maxime Gaillard, développeur et conseiller, étudiant en finance à l'IESEG. GeoSnap en ligne sur l'App Store, CG Relais, 4 500 abonnés LinkedIn.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f4f2ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0d" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ff4d2e'/%3E%3Ctext x='50' y='70' font-size='52' font-family='system-ui' font-weight='800' fill='%23fff' text-anchor='middle'%3EMG%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-stretch:75% 100%;font-display:swap;src:url(/fonts/bricolage-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+  @font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-stretch:75% 100%;font-display:swap;src:url(/fonts/bricolage-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+  @font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/instrument-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+  @font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/instrument-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+
+  :root[data-theme="dark"]{--bg:#0b0b0d;--panel:#141416;--ink:#f2f2ef;--mut:#8e8e96;--line:rgba(255,255,255,.13);--accent:#ff5d3f;--green:#4bd98a;}
+  :root[data-theme="light"]{--bg:#f4f2ec;--panel:#fffdf8;--ink:#18150f;--mut:#6d655a;--line:rgba(0,0,0,.12);--accent:#d8401f;--green:#0f8a4d;}
+  :root{--disp:"Bricolage Grotesque",-apple-system,"Helvetica Neue",Arial,sans-serif;--body:"Instrument Sans",-apple-system,system-ui,sans-serif;--mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;--col:660px;--ease:cubic-bezier(.22,.61,.24,1);}
+  *{box-sizing:border-box;margin:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-optical-sizing:auto;font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;letter-spacing:-.008em;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--accent);color:#fff;}
+  body:not(.en) .en{display:none;}
+  body.en .fr{display:none;}
+  .col{max-width:var(--col);margin:0 auto;padding:0 22px;}
+
+  /* en-tête discret, façon en-tête de lettre */
+  .top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(9px);border-bottom:1px solid var(--line);}
+  .top-in{max-width:var(--col);margin:0 auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .id .nm{font-family:var(--disp);font-weight:700;font-size:.98rem;letter-spacing:-.02em;display:block;line-height:1.25;}
+  .id .rl{color:var(--mut);font-size:.86rem;display:block;line-height:1.25;}
+  .acts{display:flex;align-items:center;gap:7px;}
+  .tg{font:inherit;font-size:.8rem;color:var(--mut);background:transparent;border:1px solid var(--line);border-radius:8px;padding:5px 9px;cursor:pointer;line-height:1;transition:color .18s,border-color .18s;}
+  .tg:hover{color:var(--ink);border-color:var(--mut);}
+  .cta{font-size:.86rem;font-weight:600;background:var(--ink);color:var(--bg);border-radius:999px;padding:7px 15px;white-space:nowrap;transition:opacity .18s;}
+  .cta:hover{opacity:.82;}
+  @media(max-width:520px){.id .rl{display:none;}.cta{padding:7px 12px;}}
+
+  section{padding:34px 0;}
+  .intro{padding-top:44px;}
+  .intro p{font-size:1.14rem;line-height:1.62;color:var(--ink);}
+  .intro p+p{margin-top:15px;}
+  .intro .q{color:var(--mut);}
+  .intro b{font-weight:650;}
+  .avail{display:inline-flex;align-items:flex-start;gap:8px;margin-top:20px;font-size:.92rem;color:var(--mut);}
+  .avail i{width:7px;height:7px;margin-top:.52em;border-radius:50%;background:var(--green);flex:0 0 auto;font-style:normal;}
+
+  /* bandeau de confiance */
+  .trust{padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px 18px;flex-wrap:wrap;}
+  .trust .lbl{color:var(--mut);font-size:.84rem;}
+  .trust span.o{font-family:var(--disp);font-weight:650;font-size:.98rem;letter-spacing:-.015em;opacity:.72;}
+
+  h2{font-family:var(--disp);font-weight:700;font-size:1.28rem;letter-spacing:-.02em;margin-bottom:16px;}
+  .h2row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px;}
+  .h2row h2{margin:0;}
+  .h2row .hint{color:var(--mut);font-size:.86rem;}
+
+  /* cartes projet : le visuel est le contenu */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:560px){.cards{grid-template-columns:1fr;}}
+  .card{text-align:left;font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:13px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:border-color .2s,transform .2s var(--ease);}
+  .card:hover,.card:focus-visible{border-color:var(--accent);transform:translateY(-2px);outline:none;}
+  .card .shot{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center;background:var(--bg);border-bottom:1px solid var(--line);}
+  .card .in{padding:13px 14px 14px;display:flex;flex-direction:column;gap:3px;flex:1;}
+  .card .t{font-family:var(--disp);font-weight:700;font-size:1.04rem;letter-spacing:-.018em;}
+  .card .d{color:var(--mut);font-size:.9rem;line-height:1.42;}
+  .card .s{margin-top:7px;font-size:.82rem;color:var(--mut);}
+  .card .s.live{color:var(--green);font-weight:600;}
+  .card.noshot .in{padding-top:15px;}
+
+  /* parcours dense */
+  .rows{border-top:1px solid var(--line);}
+  .row{display:grid;grid-template-columns:88px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+  .row .y{font-family:var(--mono);font-size:.8rem;color:var(--mut);}
+  .row b{font-weight:650;font-size:.98rem;display:block;letter-spacing:-.012em;}
+  .row .d{color:var(--mut);font-size:.9rem;}
+  @media(max-width:520px){.row{grid-template-columns:1fr;gap:1px;}}
+  .cvbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;}
+  .btn{font-size:.88rem;font-weight:600;padding:8px 15px;border-radius:999px;border:1px solid var(--line);cursor:pointer;display:inline-flex;align-items:center;transition:border-color .18s,background .18s,color .18s;}
+  .btn.p{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .btn.g:hover{border-color:var(--ink);}
+  .sub{margin-top:22px;display:grid;gap:9px;}
+  .sub h3{font-family:var(--disp);font-weight:700;font-size:.98rem;letter-spacing:-.015em;}
+  .pills{display:flex;flex-wrap:wrap;gap:6px;}
+  .pills span{font-size:.84rem;color:var(--mut);border:1px solid var(--line);border-radius:7px;padding:3px 9px;}
+
+  /* contact */
+  .contact{border-top:1px solid var(--line);}
+  .contact p{color:var(--mut);font-size:1rem;max-width:52ch;}
+  .cform{margin-top:18px;display:grid;gap:9px;}
+  .cf2{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+  @media(max-width:520px){.cf2{grid-template-columns:1fr;}}
+  .cform input,.cform textarea{font:inherit;font-size:.96rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 12px;width:100%;transition:border-color .18s;}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--accent);}
+  .cform textarea{resize:vertical;min-height:92px;}
+  .cform button{justify-self:start;}
+  .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  footer{border-top:1px solid var(--line);padding:18px 0 34px;color:var(--mut);font-size:.84rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  footer a:hover{color:var(--accent);}
+
+  /* fiche projet */
+  .ov{position:fixed;inset:0;z-index:80;background:var(--bg);opacity:0;visibility:hidden;transition:opacity .26s var(--ease),visibility .26s;overflow-y:auto;overscroll-behavior:contain;}
+  .ov.open{opacity:1;visibility:visible;}
+  .ov-top{position:sticky;top:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(9px);border-bottom:1px solid var(--line);z-index:2;}
+  .ov-top .in{max-width:var(--col);margin:0 auto;padding:11px 22px;height:auto;display:flex;align-items:center;justify-content:space-between;}
+  .ov-top .k{font-family:var(--mono);font-size:.82rem;color:var(--mut);}
+  .close{border:1px solid var(--line);background:var(--panel);color:var(--ink);width:32px;height:32px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .18s;}
+  .close:hover{border-color:var(--accent);}
+  .ov-body{max-width:var(--col);margin:0 auto;padding:32px 22px 70px;}
+  .ov-title{font-family:var(--disp);font-weight:700;font-size:1.9rem;letter-spacing:-.03em;line-height:1.08;}
+  .ov-tag{color:var(--mut);font-size:1.02rem;margin-top:3px;}
+  .ov-gallery{display:flex;gap:10px;margin:22px 0;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;}
+  .ov-gallery img{height:min(52vh,440px);width:auto;border-radius:13px;border:1px solid var(--line);display:block;scroll-snap-align:center;}
+  .ov-block+.ov-block{margin-top:16px;}
+  .ov-block h4{font-family:var(--disp);font-weight:700;font-size:1rem;letter-spacing:-.015em;margin-bottom:3px;}
+  .ov-block p{color:var(--mut);font-size:1rem;line-height:1.55;}
+  .ov-meta{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);display:grid;gap:12px;}
+  body.locked{overflow:hidden;}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}html{scroll-behavior:auto;}}
+</style></head>
+<body>
+
+<header class="top"><div class="top-in">
+  <a class="id" href="#top"><span class="nm">Maxime Gaillard</span><span class="rl"><span class="fr">Développeur &amp; conseiller</span><span class="en">Developer &amp; advisor</span></span></a>
+  <div class="acts">
+    <button class="tg" id="langBtn" aria-label="Langue">EN</button>
+    <button class="tg" id="themeBtn" aria-label="Thème">◐</button>
+    <a class="cta" href="#contact"><span class="fr">Un projet ?</span><span class="en">Got a project?</span></a>
+  </div>
+</div></header>
+
+<main class="col" id="top">
+
+  <section class="intro">
+    <div class="fr">
+      <p>Je suis étudiant en finance à l'IESEG et je construis des produits. <b>GeoSnap</b>, une app de partage photo géolocalisé, est en ligne sur l'App Store. Je l'ai conçue, codée et publiée seul, en React Native et Supabase.</p>
+      <p class="q">En parallèle je cofonde <b>CG Relais</b>, où on automatise les tâches répétitives des PME du transport : devis, relances et mails. Je publie aussi sur LinkedIn pour une audience de 4 500 personnes en finance et en tech, ce qui m'amène des collaborations de marque.</p>
+      <p class="q">Je vends et je livre moi-même, sans intermédiaire. C'est ce qui m'intéresse : être au contact du client et écrire le code qui répond à son problème.</p>
+    </div>
+    <div class="en">
+      <p>I'm a finance student at IESEG and I build products. <b>GeoSnap</b>, a location-based photo sharing app, is live on the App Store. I designed, coded and shipped it alone, in React Native and Supabase.</p>
+      <p class="q">Alongside that I co-found <b>CG Relais</b>, where we automate the repetitive work of transport SMEs: quotes, follow-ups and emails. I also publish on LinkedIn to an audience of 4,500 in finance and tech, which brings in brand collaborations.</p>
+      <p class="q">I sell and I ship myself, no middleman. That's what interests me: being close to the client and writing the code that answers their problem.</p>
+    </div>
+    <p class="avail"><i></i><span class="fr">En recherche d'un stage en vente pour l'été 2027.</span><span class="en">Looking for a sales internship for summer 2027.</span></p>
+  </section>
+
+  <section class="trust">
+    <span class="lbl"><span class="fr">Passé par</span><span class="en">Previously at</span></span>
+    <span class="o">BPCE</span><span class="o">Stellantis</span><span class="o">IESEG</span><span class="o">Bloomberg</span>
+  </section>
+
+  <section class="work" id="projets">
+    <div class="h2row">
+      <h2><span class="fr">Projets</span><span class="en">Projects</span></h2>
+      <span class="hint"><span class="fr">Clique pour le détail</span><span class="en">Click for details</span></span>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section class="cvsec" id="cv">
+    <div class="h2row">
+      <h2><span class="fr">Parcours</span><span class="en">Background</span></h2>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="y">2025 → <span class="fr">auj.</span><span class="en">now</span></span><div><b><span class="fr">Fondateur &amp; développeur, GeoSnap · Cofondateur, CG Relais</span><span class="en">Founder &amp; developer, GeoSnap · Co-founder, CG Relais</span></b><span class="d"><span class="fr">Développement produit, conseil IA et vente.</span><span class="en">Product development, AI consulting and sales.</span></span></div></div>
+      <div class="row"><span class="y">2026</span><div><b><span class="fr">Stage, BPCE · Achats &amp; Services</span><span class="en">Internship, BPCE · Procurement &amp; Services</span></b><span class="d"><span class="fr">Automatisation Excel par macros et gestion de dossiers.</span><span class="en">Excel automation with macros and records management.</span></span></div></div>
+      <div class="row"><span class="y">2023 → 2025</span><div><b><span class="fr">Vendeur &amp; préparateur, Manon Marée</span><span class="en">Sales assistant, Manon Marée</span></b><span class="d"><span class="fr">Relation client et vente. Palaiseau.</span><span class="en">Client relations and sales. Palaiseau.</span></span></div></div>
+      <div class="row"><span class="y">2023</span><div><b><span class="fr">Chargé de qualité, E.Leclerc</span><span class="en">Quality officer, E.Leclerc</span></b><span class="d"><span class="fr">Contrôle qualité et contenus vidéo promo. Belfort.</span><span class="en">Quality control and promo video content. Belfort.</span></span></div></div>
+      <div class="row"><span class="y">2023</span><div><b><span class="fr">Stage découverte, Stellantis</span><span class="en">Discovery internship, Stellantis</span></b><span class="d"><span class="fr">Service Design et contrôle de gestion R&amp;D Europe.</span><span class="en">Service Design and management control, R&amp;D Europe.</span></span></div></div>
+      <div class="row"><span class="y">2022</span><div><b><span class="fr">Serveur &amp; caissier, Petite Bretagne</span><span class="en">Server &amp; cashier, Petite Bretagne</span></b><span class="d"><span class="fr">Vente en anglais et gestion des stocks. New York.</span><span class="en">Sales in English and stock management. New York.</span></span></div></div>
+    </div>
+    <h3 style="font-family:var(--disp);font-weight:700;font-size:.98rem;letter-spacing:-.015em;margin:22px 0 10px;"><span class="fr">Formation</span><span class="en">Education</span></h3>
+    <div class="rows">
+      <div class="row"><span class="y">2025 → 2030</span><div><b>IESEG School of Management</b><span class="d"><span class="fr">Programme Grande École, Master. Lille.</span><span class="en">Master in Management, Grande École. Lille.</span></span></div></div>
+      <div class="row"><span class="y">2022 → 2025</span><div><b>Lycée International Paris-Saclay</b><span class="d"><span class="fr">Bac mention, section européenne anglais.</span><span class="en">Baccalaureate with honours, English section.</span></span></div></div>
+    </div>
+    <div class="cvbtns">
+      <span class="fr"><a class="btn p" href="cv/Maxime-Gaillard-CV-officiel-FR.pdf" download>CV officiel</a></span>
+      <span class="en"><a class="btn p" href="cv/Maxime-Gaillard-CV-officiel-EN.pdf" download>Official CV</a></span>
+      <span class="fr"><a class="btn g" href="cv/Maxime-Gaillard-CV-IA-FR.pdf" download>CV IA-compatible</a></span>
+      <span class="en"><a class="btn g" href="cv/Maxime-Gaillard-CV-IA-EN.pdf" download>AI-ready CV</a></span>
+    </div>
+    <div class="sub">
+      <h3><span class="fr">Langues &amp; certifications</span><span class="en">Languages &amp; certifications</span></h3>
+      <div class="pills">
+        <span><span class="fr">Français natif</span><span class="en">French, native</span></span>
+        <span><span class="fr">Anglais B2-C1 · IELTS 6.5</span><span class="en">English B2-C1 · IELTS 6.5</span></span>
+        <span><span class="fr">Allemand B1-B2</span><span class="en">German B1-B2</span></span>
+        <span>Bloomberg Market Concepts</span><span>Google Analytics</span>
+        <span><span class="fr">Cybercriminalité, UNODC</span><span class="en">Cybercrime, UNODC</span></span>
+        <span><span class="fr">Permis B</span><span class="en">Driving licence B</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2><span class="fr">Me contacter</span><span class="en">Get in touch</span></h2>
+    <p><span class="fr">Un projet, un stage ou une collaboration de marque ? Écris-moi ici. LinkedIn marche aussi si c'est plus simple.</span><span class="en">A project, an internship or a brand collaboration? Write here, or use LinkedIn if that's easier.</span></p>
+    <form id="contactForm" name="contact-v2" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="cform">
+      <input type="hidden" name="form-name" value="contact-v2">
+      <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
+      <div class="cf2">
+        <input name="name" type="text" required data-fr="Nom" data-en="Name" placeholder="Nom" aria-label="Nom">
+        <input name="email" type="email" required data-fr="Email" data-en="Email" placeholder="Email" aria-label="Email">
+      </div>
+      <textarea name="message" required rows="4" data-fr="Ton message" data-en="Your message" placeholder="Ton message" aria-label="Message"></textarea>
+      <button class="btn p" type="submit"><span class="fr">Envoyer</span><span class="en">Send</span></button>
+    </form>
+    <div class="links">
+      <a class="btn g" href="https://www.linkedin.com/in/maxime-rené-gaillard" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn g" href="https://apps.apple.com/fr/app/geosnap-f56181/id6783998653" target="_blank" rel="noopener">GeoSnap</a>
+      <button class="btn g" id="emailBtn" type="button">maximegaillard@yahoo.com</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="col">
+  <span>© 2026 Maxime Gaillard</span>
+  <span>Paris / Lille</span>
+</footer>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="ovTitle" tabindex="-1">
+  <div class="ov-top"><div class="in"><span class="k" id="ovKick"></span><button class="close" id="ovClose" aria-label="Fermer">×</button></div></div>
+  <div class="ov-body">
+    <h1 class="ov-title" id="ovTitle"></h1>
+    <p class="ov-tag" id="ovTag"></p>
+    <div class="ov-gallery" id="ovGallery"></div>
+    <div id="ovBlocks"></div>
+    <div class="ov-meta">
+      <div id="ovStackWrap"><h4 style="font-family:var(--disp);font-weight:700;font-size:1rem;margin-bottom:6px;"><span class="fr">Stack</span><span class="en">Stack</span></h4><div class="pills" id="ovStack"></div></div>
+      <div id="ovStatus"></div>
+      <div id="ovLinkWrap"><a class="btn p" id="ovLink" target="_blank" rel="noopener"></a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function isEn(){return document.body.classList.contains("en");}
+  var PROJECTS=[
+    {id:"geosnap",date:"2026",stype:"live",imgs:["img/geosnap-1.jpg","img/geosnap-2.jpg","img/geosnap-3.jpg"],stack:["React Native","Expo","Supabase"],href:"https://apps.apple.com/fr/app/geosnap-f56181/id6783998653",
+     fr:{kind:"Projet",title:"GeoSnap",tag:"Partage photo géolocalisé",status:"En ligne · App Store",link:"Voir sur l'App Store",blocks:[["Le problème","Nos souvenirs se perdent, coupés de l'endroit où on les a vécus."],["Ce que j'ai fait","Conçu, codé et publié l'appli en solo, de l'idée jusqu'au store."],["Le résultat","En ligne sur l'App Store, en amélioration continue."]]},
+     en:{kind:"Project",title:"GeoSnap",tag:"Location-based photo sharing",status:"Live · App Store",link:"View on the App Store",blocks:[["The problem","Our memories get lost, cut off from where we lived them."],["What I did","Designed, coded and shipped the app solo, from idea to the store."],["The result","Live on the App Store, improving continuously."]]}},
+    {id:"cg",date:"2026",stype:"go",imgs:["img/cg-relais.jpg"],stack:["Automatisation","IA","Conseil"],href:null,
+     fr:{kind:"Projet",title:"CG Relais",tag:"Conseil IA pour le transport",status:"En lancement",link:null,blocks:[["Le problème","Les PME du transport perdent des heures sur des tâches répétitives : devis, relances, mails."],["Ce que j'ai fait","Cofondateur. On audite les process, on automatise les tâches répétitives pour faire gagner du temps, puis on accompagne dans la durée."],["Le résultat","En lancement, premières PME accompagnées."]]},
+     en:{kind:"Project",title:"CG Relais",tag:"AI consulting for transport",status:"Launching",link:null,blocks:[["The problem","Transport SMEs lose hours on repetitive tasks: quotes, follow-ups, emails."],["What I did","Co-founder. We audit processes, automate repetitive tasks to save time, then support clients over time."],["The result","Launching, first SMEs onboarded."]]}},
+    {id:"bloomberg",date:"2026",stype:"done",imgs:["img/bloomberg.jpg"],stack:[],href:null,
+     fr:{kind:"Jalon",title:"Bloomberg certifié",tag:"Bloomberg Market Concepts",status:"Certifié",link:null,blocks:[["Ce que c'est","La certification Bloomberg Market Concepts : marchés, analyse financière, prise en main du terminal."],["Pourquoi ça compte","Elle ancre mon pied finance, juste à côté du produit et du code."]]},
+     en:{kind:"Milestone",title:"Bloomberg certified",tag:"Bloomberg Market Concepts",status:"Certified",link:null,blocks:[["What it is","The Bloomberg Market Concepts certification: markets, financial analysis, terminal basics."],["Why it matters","It anchors my finance side, right next to product and code."]]}},
+    {id:"linkedin",date:"2025",stype:"up",imgs:["img/linkedin.jpg"],stack:[],href:"https://www.linkedin.com/in/maxime-rené-gaillard",
+     fr:{kind:"Jalon",title:"4 500+ sur LinkedIn",tag:"Audience finance & tech",status:"Actif",link:"Voir mon LinkedIn",blocks:[["Ce que j'ai fait","Construit une audience d'étudiants et de jeunes pros en finance, consulting et tech, en publiant régulièrement."],["Le résultat","4 500+ abonnés et des collaborations de marque cadrées."]]},
+     en:{kind:"Milestone",title:"4,500+ on LinkedIn",tag:"Finance & tech audience",status:"Active",link:"See my LinkedIn",blocks:[["What I did","Grew an audience of students and young pros in finance, consulting and tech, by posting regularly."],["The result","4,500+ followers and structured brand collaborations."]]}},
+    {id:"web",date:"2025",stype:"done",imgs:[],stack:["Web","Marketing","Vente"],href:null,
+     fr:{kind:"Projet",title:"Web & e-commerce",tag:"Sites PME · boutiques",status:"Livré",link:null,blocks:[["Ce que j'ai fait","Avant les apps, j'ai livré des sites pour des PME et monté des boutiques e-commerce : tunnels de vente, marketing, acquisition."],["Le résultat","La vente et le web appris sur le terrain, avec de vrais clients."]]},
+     en:{kind:"Project",title:"Web & e-commerce",tag:"SME sites · stores",status:"Shipped",link:null,blocks:[["What I did","Before apps, I delivered websites for SMEs and built e-commerce stores: sales funnels, marketing, acquisition."],["The result","Sales and the web learned on the ground, with real clients."]]}}
+  ];
+
+  var cards=document.getElementById("cards");
+  PROJECTS.forEach(function(p){
+    var b=document.createElement("button"); b.type="button"; b.className="card"+(p.imgs&&p.imgs.length?"":" noshot");
+    b.setAttribute("aria-haspopup","dialog");
+    var shot=(p.imgs&&p.imgs.length)?'<img class="shot" src="'+p.imgs[0]+'" alt="" loading="lazy" width="640" height="400">':"";
+    b.innerHTML=shot+'<span class="in">'
+      +'<span class="t"><span class="fr">'+p.fr.title+'</span><span class="en">'+p.en.title+'</span></span>'
+      +'<span class="d"><span class="fr">'+p.fr.tag+'</span><span class="en">'+p.en.tag+'</span></span>'
+      +'<span class="s '+(p.stype==="live"?"live":"")+'"><span class="fr">'+p.fr.status+'</span><span class="en">'+p.en.status+'</span></span>'
+      +'</span>';
+    b.addEventListener("click",function(){openP(p);});
+    cards.appendChild(b);
+  });
+
+  (function(){var seen={};function pre(){PROJECTS.forEach(function(p){(p.imgs||[]).forEach(function(s){if(seen[s])return;seen[s]=1;var im=new Image();im.src=s;});});}
+   if(document.readyState==="complete")pre();else window.addEventListener("load",pre);})();
+
+  var ov=document.getElementById("ov"), lastFocus=null;
+  function openP(p){
+    var L=isEn()?p.en:p.fr;
+    lastFocus=document.activeElement;
+    document.getElementById("ovKick").textContent=p.date+" · "+L.kind;
+    document.getElementById("ovTitle").textContent=L.title;
+    document.getElementById("ovTag").textContent=L.tag;
+    var g=document.getElementById("ovGallery");
+    if(p.imgs&&p.imgs.length){g.style.display="";g.innerHTML=p.imgs.map(function(s){return '<img src="'+s+'" alt="'+L.title+'">';}).join("");}
+    else{g.style.display="none";g.innerHTML="";}
+    var bl=document.getElementById("ovBlocks"); bl.innerHTML="";
+    L.blocks.forEach(function(x){var d=document.createElement("div");d.className="ov-block";d.innerHTML="<h4>"+x[0]+"</h4><p>"+x[1]+"</p>";bl.appendChild(d);});
+    var sw=document.getElementById("ovStackWrap");
+    if(p.stack&&p.stack.length){sw.hidden=false;document.getElementById("ovStack").innerHTML=p.stack.map(function(s){return "<span>"+s+"</span>";}).join("");}else sw.hidden=true;
+    document.getElementById("ovStatus").innerHTML='<span class="s'+(p.stype==="live"?" live":"")+'" style="font-size:.9rem;color:'+(p.stype==="live"?"var(--green)":"var(--mut)")+';font-weight:'+(p.stype==="live"?"600":"400")+'">'+L.status+'</span>';
+    var lw=document.getElementById("ovLinkWrap"),la=document.getElementById("ovLink");
+    if(L.link&&p.href){lw.hidden=false;la.textContent=L.link;la.href=p.href;}else lw.hidden=true;
+    ov.classList.add("open"); ov.scrollTop=0; document.body.classList.add("locked");
+    document.getElementById("ovClose").focus();
+  }
+  function closeOv(){ov.classList.remove("open");document.body.classList.remove("locked");if(lastFocus)lastFocus.focus();}
+  document.getElementById("ovClose").addEventListener("click",closeOv);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&ov.classList.contains("open"))closeOv();});
+
+  function updateLabels(){
+    var en=isEn(), dark=document.documentElement.dataset.theme==="dark";
+    document.getElementById("langBtn").textContent=en?"FR":"EN";
+    document.getElementById("langBtn").setAttribute("aria-label",en?"Passer en français":"Switch to English");
+    document.getElementById("themeBtn").textContent=dark?"☀":"☾";
+    document.getElementById("themeBtn").setAttribute("aria-label",dark?(en?"Light theme":"Thème clair"):(en?"Dark theme":"Thème sombre"));
+    document.querySelectorAll("[data-fr][data-en]").forEach(function(el){if("placeholder" in el)el.placeholder=en?el.dataset.en:el.dataset.fr;});
+  }
+  (function(){
+    var sl=localStorage.getItem("lang");
+    var en=sl?sl==="en":((navigator.language||"fr").toLowerCase().indexOf("fr")!==0);
+    if(en){document.body.classList.add("en");document.documentElement.lang="en";}
+    var st=localStorage.getItem("theme");
+    document.documentElement.dataset.theme=st||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    updateLabels();
+  })();
+  document.getElementById("langBtn").addEventListener("click",function(){
+    var en=!isEn();document.body.classList.toggle("en",en);document.documentElement.lang=en?"en":"fr";
+    localStorage.setItem("lang",en?"en":"fr");updateLabels();
+  });
+  document.getElementById("themeBtn").addEventListener("click",function(){
+    var t=document.documentElement.dataset.theme==="dark"?"light":"dark";
+    document.documentElement.dataset.theme=t;localStorage.setItem("theme",t);updateLabels();
+  });
+
+  var eb=document.getElementById("emailBtn");
+  eb.addEventListener("click",function(){try{navigator.clipboard.writeText("maximegaillard@yahoo.com");}catch(e){}
+    var t=eb.textContent;eb.textContent=isEn()?"Copied":"Copié";setTimeout(function(){eb.textContent=t;},1500);});
+
+  var cf=document.getElementById("contactForm");
+  cf.addEventListener("submit",function(e){e.preventDefault();
+    var body=new URLSearchParams(new FormData(cf)).toString();
+    fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body})
+      .then(function(){cf.innerHTML='<p style="font-weight:600"><span class="fr">Merci, ton message est parti.</span><span class="en">Thanks, your message is on its way.</span></p>';})
+      .catch(function(){cf.innerHTML='<p style="font-weight:600"><span class="fr">Message envoyé.</span><span class="en">Message sent.</span></p>';});});
+</script>
+</body></html>
