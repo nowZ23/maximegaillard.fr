@@ -1,0 +1,6 @@
+# Dossier local Netlify
+.netlify
+.DS_Store
+
+# Sauvegardes locales (l'historique git les remplace)
+index.backup*.html

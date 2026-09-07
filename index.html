@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="fr" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maxime Gaillard · Développeur, conseiller & finance</title>
+<meta name="description" content="Maxime Gaillard, développeur et conseiller, étudiant en finance à l'IESEG. Une app en ligne sur l'App Store, une boîte de conseil IA, 4 500+ sur LinkedIn.">
+<link rel="canonical" href="https://maximegaillard.fr/">
+<meta name="theme-color" content="#f4f2ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0d" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ff4d2e'/%3E%3Ctext x='50' y='70' font-size='52' font-family='system-ui' font-weight='800' fill='%23fff' text-anchor='middle'%3EMG%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Maxime Gaillard · Développeur, conseiller & finance">
+<meta property="og:description" content="Développeur et conseiller, étudiant en finance. Une app sur l'App Store, une boîte de conseil IA, 4 500+ sur LinkedIn.">
+<meta property="og:url" content="https://maximegaillard.fr/">
+<meta property="og:image" content="https://maximegaillard.fr/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://maximegaillard.fr/img/og.jpg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Maxime Gaillard","url":"https://maximegaillard.fr/","image":"https://maximegaillard.fr/img/maxime.jpg","email":"mailto:maximegaillard@yahoo.com","jobTitle":"Développeur, conseiller et étudiant en finance","affiliation":{"@type":"CollegeOrUniversity","name":"IESEG School of Management"},"sameAs":["https://www.linkedin.com/in/maxime-rené-gaillard","https://workspace.passionfroot.me/maxime-gaillard","https://apps.apple.com/fr/app/geosnap-f56181/id6783998653"]}</script>
+<style>
+  /* Bricolage Grotesque + Instrument Sans (OFL), self-hosted */
+  @font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-stretch:75% 100%;font-display:swap;src:url(/fonts/bricolage-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+  @font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-stretch:75% 100%;font-display:swap;src:url(/fonts/bricolage-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+  @font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/instrument-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+  @font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/instrument-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+  :root[data-theme="dark"]{--bg:#0b0b0d;--panel:#161618;--ink:#f7f7f4;--mut:#93939a;--line:rgba(255,255,255,.14);--accent:#ff4d2e;--green:#41d67e;--amber:#ffb340;--blue:#6ea8ff;--stroke:#f7f7f4;}
+  :root[data-theme="light"]{--bg:#f4f2ec;--panel:#fffdf8;--ink:#18150f;--mut:#6d655a;--line:rgba(0,0,0,.13);--accent:#d8401f;--green:#0f8a4d;--amber:#b7761b;--blue:#2c5fd0;--stroke:#18150f;}
+  :root{--disp:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;--body:"Instrument Sans",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;--mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;--wrap:1160px;--ease:cubic-bezier(.22,.61,.24,1);}
+  *{box-sizing:border-box;margin:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-optical-sizing:auto;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;letter-spacing:-.012em;transition:background .35s var(--ease),color .35s var(--ease);}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(1.2rem,4vw,2.6rem);}
+  ::selection{background:var(--accent);color:#fff;}
+  body:not(.en) .en{display:none;}
+  body.en .fr{display:none;}
+
+  nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line);}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:.8rem;}
+  .brand{font-weight:700;letter-spacing:-.02em;cursor:pointer;user-select:none;}
+  .brand b{color:var(--accent);}
+  .nav-r{display:flex;align-items:center;gap:clamp(.6rem,2vw,1.4rem);}
+  .nav-links{display:flex;gap:1.4rem;font-size:.86rem;color:var(--mut);}
+  .nav-links a:hover{color:var(--ink);}
+  .burger{display:none;}
+  @media(max-width:760px){
+    .burger{display:flex;flex-direction:column;gap:5px;width:36px;height:36px;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;order:3;padding:0;}
+    .burger span{width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s var(--ease),opacity .2s;}
+    nav.open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    nav.open .burger span:nth-child(2){opacity:0;}
+    nav.open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .nav-r{position:absolute;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:.2rem;padding:.5rem clamp(1.2rem,4vw,2.6rem) 1.2rem;display:none;box-shadow:0 24px 44px -22px rgba(0,0,0,.4);}
+    nav.open .nav-r{display:flex;}
+    .nav-links{display:flex;flex-direction:column;gap:0;}
+    .nav-links a{padding:.85rem 0;font-size:1.05rem;color:var(--ink);border-bottom:1px solid var(--line);}
+    .nav-links a.active::after{display:none;}
+    .nav-links a.active{color:var(--accent);}
+    .nav-r .dd{align-self:flex-start;margin-top:.5rem;}
+    .nav-r .dd:first-of-type{margin-top:.8rem;}
+    .dd-menu{right:auto;left:0;}
+  }
+  .tbtn{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;border:1px solid var(--line);background:var(--panel);color:var(--mut);border-radius:999px;padding:.36rem .8rem;cursor:pointer;display:inline-flex;gap:.5rem;align-items:center;transition:border-color .2s,color .2s;}
+  .tbtn:hover{color:var(--ink);border-color:var(--accent);}
+  .tbtn .d{width:8px;height:8px;border-radius:50%;background:var(--accent);}
+
+  .hero{padding:clamp(4rem,13vh,9rem) 0 clamp(3rem,8vh,6rem);}
+  @media(max-width:680px){.hero{padding-top:2.4rem;}section{padding-top:clamp(2.6rem,7vw,4rem);padding-bottom:clamp(2.6rem,7vw,4rem);}}
+  h1{font-family:var(--disp);font-weight:800;font-size:clamp(3rem,10vw,8rem);line-height:.94;letter-spacing:-.04em;text-wrap:balance;}
+  h1 .o{-webkit-text-stroke:2px var(--stroke);color:transparent;}
+  h1 .ac{color:var(--accent);}
+  .deck{margin-top:clamp(1.8rem,4vw,2.8rem);font-size:clamp(1.1rem,1.7vw,1.5rem);color:var(--mut);max-width:46ch;line-height:1.45;}
+  .deck b{color:var(--ink);font-weight:600;}
+  .scroll{margin-top:clamp(2.4rem,6vw,4rem);font-size:.95rem;color:var(--mut);display:flex;width:fit-content;align-items:center;gap:.8rem;}
+  .scroll .ln{width:46px;height:1px;background:var(--mut);display:inline-block;}
+
+  .band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(3rem,9vw,6.5rem) 0;}
+  .band .q{font-family:var(--disp);font-weight:800;font-size:clamp(1.9rem,5.2vw,4rem);line-height:1.03;letter-spacing:-.03em;max-width:22ch;}
+  .band .q .ac{color:var(--accent);}
+
+  .proj{padding:clamp(3.4rem,8vw,6rem) 0 clamp(3rem,7vw,5rem);}
+  .sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(2rem,5vw,3.4rem);}
+  .sec-h h2{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1;}
+  .sec-h p{color:var(--mut);font-size:1rem;}
+
+  .tl-item{position:relative;width:100%;text-align:left;background:transparent;border:0;border-top:1px solid var(--line);padding:clamp(1.3rem,3vw,2rem) 0;cursor:pointer;color:inherit;font:inherit;display:grid;grid-template-columns:110px 1fr auto;gap:clamp(1rem,3vw,2.4rem);align-items:baseline;transition:padding-left .3s var(--ease);}
+  .tl-item:last-child{border-bottom:1px solid var(--line);}
+  .tl-item:hover,.tl-item:focus-visible{padding-left:14px;outline:none;}
+  .tl-item:hover .tl-title,.tl-item:focus-visible .tl-title{color:var(--accent);}
+  .tl-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .3s var(--ease);}
+  .tl-item:hover::before,.tl-item:focus-visible::before{transform:scaleY(1);}
+  .tl-date{font-family:var(--mono);font-size:.85rem;color:var(--mut);padding-top:.5rem;}
+  .tl-main{min-width:0;}
+  .tl-kind{display:block;font-size:.92rem;color:var(--mut);}
+  .tl-title{display:block;font-family:var(--disp);font-weight:750;font-size:clamp(1.6rem,3.6vw,2.6rem);letter-spacing:-.025em;line-height:1.04;margin:.15rem 0 .3rem;transition:color .2s var(--ease);}
+  .tl-tag{display:block;color:var(--mut);font-size:1.02rem;}
+  .tl-right{display:flex;align-items:center;gap:1.1rem;padding-top:.4rem;}
+  .chip{font-size:.95rem;font-weight:500;color:var(--mut);white-space:nowrap;}
+  .chip.live{color:var(--green);font-weight:600;}
+  .tl-plus{font-family:var(--mono);color:var(--mut);font-size:1.1rem;transition:transform .3s var(--ease),color .2s;}
+  .tl-item:hover .tl-plus{color:var(--accent);transform:rotate(90deg);}
+  @media(max-width:680px){.tl-item{grid-template-columns:1fr;gap:.4rem;}.tl-right{padding-top:.6rem;}}
+
+  .profil{padding:clamp(3.4rem,8vw,6rem) 0;border-top:1px solid var(--line);}
+  .profil .lead{font-family:var(--disp);font-weight:750;font-size:clamp(1.7rem,4.2vw,3rem);letter-spacing:-.03em;line-height:1.08;max-width:20ch;}
+  .profil .lead .ac{color:var(--accent);}
+  .profil .body{margin-top:1.7rem;max-width:56ch;color:var(--mut);font-size:1.14rem;line-height:1.6;display:grid;gap:1rem;}
+  .profil .body b{color:var(--ink);font-weight:600;}
+
+  .cv{padding:clamp(3.4rem,8vw,6rem) 0;border-top:1px solid var(--line);}
+  .cv-btns{display:flex;gap:.7rem;flex-wrap:wrap;}
+  .cv-list{border-top:1px solid var(--line);}
+  .cv-row{display:grid;grid-template-columns:130px 1fr;gap:clamp(1rem,3vw,2.2rem);padding:1.1rem 0;border-bottom:1px solid var(--line);}
+  .cv-year{font-family:var(--mono);font-size:.85rem;color:var(--accent);padding-top:.15rem;}
+  .cv-what b{font-weight:650;font-size:1.05rem;display:block;letter-spacing:-.01em;margin-bottom:.15rem;}
+  .cv-what span.d{color:var(--mut);font-size:.96rem;}
+  .cv-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(2rem,5vw,4rem);margin-top:.5rem;}
+  @media(max-width:760px){.cv-grid{grid-template-columns:1fr;}}
+  @media(max-width:620px){.cv-row{grid-template-columns:1fr;gap:.2rem;}.cv-year{padding-top:0;}}
+  .cv-col h3{font-family:var(--disp);font-weight:700;font-size:1.15rem;letter-spacing:-.015em;color:var(--ink);margin:0 0 1rem;}
+  .cv-block+.cv-block{margin-top:2.2rem;}
+  .langs{display:grid;gap:.55rem;}
+  .lang{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:.5rem;font-size:1rem;}
+  .lang em{font-style:normal;font-family:var(--mono);font-size:.85rem;color:var(--mut);}
+  .certs{display:flex;flex-wrap:wrap;gap:.5rem;}
+  .certs span{font-size:.85rem;border:1px solid var(--line);border-radius:999px;padding:.34rem .72rem;color:var(--ink);}
+
+  .contact{border-top:1px solid var(--line);padding:clamp(3.4rem,8vw,6rem) 0 clamp(3rem,7vw,4rem);}
+  .contact h2{font-family:var(--disp);font-weight:800;font-size:clamp(2.2rem,6vw,4.4rem);letter-spacing:-.03em;line-height:1;max-width:16ch;}
+  .contact h2 .ac{color:var(--accent);}
+  .contact-sub{margin:1.2rem 0 0;color:var(--mut);font-size:1.06rem;max-width:54ch;line-height:1.5;}
+  .cbtns{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem;}
+  .btn{font-weight:600;font-size:1rem;padding:.8rem 1.5rem;border-radius:999px;border:1px solid var(--ink);display:inline-flex;gap:.5rem;align-items:center;transition:transform .12s,background .2s,color .2s;cursor:pointer;}
+  .btn.p{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .btn.g:hover{background:var(--ink);color:var(--bg);}
+  .btn:active{transform:scale(.97);}
+  footer{border-top:1px solid var(--line);padding:1.6rem 0 2.4rem;color:var(--mut);font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;}
+  .foot-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;}
+
+  /* overlay full-screen, animation détaillée */
+  .ov{position:fixed;inset:0;z-index:80;background:var(--bg);opacity:0;visibility:hidden;transform:translateY(14px) scale(.985);transition:opacity .42s var(--ease),transform .42s var(--ease),visibility .42s;overflow-y:auto;}
+  .ov.open{opacity:1;visibility:visible;transform:none;}
+  .ov-top{position:sticky;top:0;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:2;}
+  .ov-top .in{max-width:var(--wrap);margin:0 auto;padding:0 clamp(1.2rem,4vw,2.6rem);height:62px;display:flex;align-items:center;justify-content:space-between;}
+  .ov-top .k{font-family:var(--mono);font-size:.85rem;color:var(--mut);}
+  .close{border:1px solid var(--line);background:var(--panel);color:var(--ink);width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,transform .2s;}
+  .close:hover{border-color:var(--accent);transform:rotate(90deg);}
+  .ov-body{max-width:960px;margin:0 auto;padding:clamp(2.4rem,6vw,4.5rem) clamp(1.2rem,4vw,2.6rem) 6rem;}
+  .ov-body>*{opacity:0;transform:translateY(28px);}
+  .ov.open .ov-body>*{animation:ovin .58s var(--ease) forwards;}
+  .ov.open .ov-title{animation-delay:.06s;}
+  .ov.open .ov-tag{animation-delay:.13s;}
+  .ov.open .ov-visual{animation-delay:.21s;}
+  .ov.open .ov-grid{animation-delay:.3s;}
+  @keyframes ovin{to{opacity:1;transform:none;}}
+  .ov-title{font-family:var(--disp);font-weight:800;font-size:clamp(2.6rem,8vw,6rem);letter-spacing:-.04em;line-height:.96;}
+  .ov-tag{color:var(--mut);font-size:clamp(1.1rem,2vw,1.4rem);margin-top:.6rem;}
+  .ov-visual{margin:clamp(2rem,5vw,3.4rem) 0;}
+  .ov-visual.solo img{display:block;width:100%;height:auto;max-height:76vh;object-fit:contain;border-radius:16px;border:1px solid var(--line);box-shadow:0 26px 64px -32px rgba(0,0,0,.42);background:var(--panel);}
+  .ov-visual.gallery-wrap{display:flex;justify-content:center;}
+  .ov-gallery{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .ov-gallery img{height:min(66vh,640px);width:auto;border-radius:20px;border:1px solid var(--line);box-shadow:0 22px 56px -26px rgba(0,0,0,.5);display:block;}
+  @media(max-width:680px){.ov-gallery{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}.ov-gallery img{height:52vh;scroll-snap-align:center;}}
+  .ov-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3rem);}
+  @media(max-width:680px){.ov-grid{grid-template-columns:1fr;}}
+  .ov-block h4{font-family:var(--disp);font-weight:700;font-size:1.12rem;letter-spacing:-.015em;color:var(--ink);margin-bottom:.45rem;}
+  .ov-block p{color:var(--ink);font-size:1.08rem;line-height:1.55;}
+  .ov-block+.ov-block{margin-top:1.6rem;}
+  .ov-side .lbl{font-family:var(--disp);font-weight:700;font-size:1.12rem;letter-spacing:-.015em;color:var(--ink);margin-bottom:.7rem;}
+  .stack{display:flex;flex-wrap:wrap;gap:.5rem;}
+  .stack span{font-family:var(--mono);font-size:.8rem;border:1px solid var(--line);background:var(--panel);border-radius:7px;padding:.32rem .65rem;color:var(--ink);}
+  .ov-link{margin-top:1.8rem;}
+  .ov-status{margin-top:1.6rem;}
+  body.locked{overflow:hidden;}
+
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important;}html{scroll-behavior:auto;}
+    .ov{transform:none;}.ov-body>*{opacity:1;transform:none;}
+  }
+  .nav-links a{position:relative;transition:color .2s;}
+  .nav-links a.active{color:var(--ink);}
+  .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--accent);border-radius:2px;}
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:60;transition:width .1s linear;}
+  .avail{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.6rem;font-size:.95rem;color:var(--ink);border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:.5rem 1rem;}
+  .avail .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 color-mix(in srgb,var(--green) 55%,transparent);animation:apulse 1.9s ease-out infinite;flex:0 0 auto;}
+  @keyframes apulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--green) 50%,transparent);}70%{box-shadow:0 0 0 8px transparent;}100%{box-shadow:0 0 0 0 transparent;}}
+  .profil-in{display:grid;grid-template-columns:1fr auto;gap:clamp(2rem,6vw,5rem);align-items:center;}
+  @media(max-width:820px){.profil-in{grid-template-columns:1fr;}.portrait{order:-1;justify-self:start;margin-bottom:.3rem;}}
+  .portrait{margin:0;}
+  .portrait img{display:block;width:clamp(210px,26vw,310px);aspect-ratio:3/4;object-fit:cover;object-position:center 12%;border-radius:20px;border:1px solid var(--line);box-shadow:0 30px 70px -34px rgba(0,0,0,.4);filter:grayscale(.18) contrast(1.02);transition:filter .45s var(--ease),transform .45s var(--ease);}
+  .portrait img:hover{filter:none;transform:translateY(-5px);}
+  .portrait figcaption{margin-top:.7rem;font-size:.92rem;color:var(--mut);}
+  @media(max-width:820px){.portrait img{width:112px;height:112px;aspect-ratio:1;border-radius:50%;object-position:center 14%;filter:none;border-width:0;box-shadow:0 10px 26px -14px rgba(0,0,0,.4);}.portrait figcaption{display:none;}}
+  .cform{margin-top:2rem;max-width:560px;display:grid;gap:.8rem;}
+  .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+  @media(max-width:520px){.cf-row{grid-template-columns:1fr;}}
+  .cform input,.cform textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;width:100%;transition:border-color .2s;}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--accent);}
+  .cform textarea{resize:vertical;min-height:110px;}
+  .cform button{justify-self:start;cursor:pointer;}
+  .form-ok{font-size:1.12rem;color:var(--ink);font-weight:600;}
+  .dd{position:relative;}
+  .dd-btn{gap:.4rem;}
+  .dd-caret{font-size:.55rem;opacity:.65;}
+  .dd-menu{position:absolute;top:calc(100% + 6px);right:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.3rem;min-width:134px;box-shadow:0 16px 40px -18px rgba(0,0,0,.35);display:none;flex-direction:column;gap:.12rem;z-index:50;}
+  .dd.open .dd-menu{display:flex;}
+  .dd-opt{font:inherit;font-family:var(--mono);font-size:.78rem;text-align:left;background:transparent;border:0;color:var(--ink);padding:.46rem .6rem;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s,color .15s;}
+  .dd-opt:hover{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent);}
+  .dd-opt[aria-selected="true"]{color:var(--accent);font-weight:600;}
+  .foot-mail{color:var(--mut);}
+  .foot-mail:hover{color:var(--accent);}
+</style></head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<nav><div class="wrap nav-in">
+  <a class="brand" id="brand" href="#top">Maxime <b>Gaillard</b></a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-r">
+    <div class="nav-links">
+      <a href="#projets"><span class="fr">Projets</span><span class="en">Projects</span></a>
+      <a href="#profil"><span class="fr">Profil</span><span class="en">Profile</span></a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="dd" id="langDd">
+      <button class="tbtn dd-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Langue"><span id="langCur">Français</span><span class="dd-caret">▾</span></button>
+      <div class="dd-menu" role="listbox" aria-label="Langue">
+        <button class="dd-opt" data-lang="fr" role="option">Français</button>
+        <button class="dd-opt" data-lang="en" role="option">English</button>
+      </div>
+    </div>
+    <div class="dd" id="themeDd">
+      <button class="tbtn dd-btn" id="themeBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Thème"><span class="d"></span><span id="themeCur">Clair</span><span class="dd-caret">▾</span></button>
+      <div class="dd-menu" role="listbox" aria-label="Thème">
+        <button class="dd-opt" data-theme="light" role="option"><span class="fr">Clair</span><span class="en">Light</span></button>
+        <button class="dd-opt" data-theme="dark" role="option"><span class="fr">Sombre</span><span class="en">Dark</span></button>
+      </div>
+    </div>
+  </div>
+</div></nav>
+
+<a id="top"></a>
+<header class="hero"><div class="wrap">
+  <h1><span class="fr">De <span class="o">l'idée</span><br>au <span class="ac">produit livré</span>.</span><span class="en">From <span class="o">idea</span><br>to <span class="ac">shipped product</span>.</span></h1>
+  <p class="deck"><span class="fr">Étudiant en finance à l'IESEG. Une appli <b>en ligne sur l'App Store</b>, une boîte de conseil IA, une audience de <b>4 500+</b> sur LinkedIn.</span><span class="en">Finance student at IESEG. An app <b>live on the App Store</b>, an AI consulting firm, an audience of <b>4,500+</b> on LinkedIn.</span></p>
+  <p class="avail"><span class="dot"></span><span class="fr">En recherche d'un stage en vente pour l'été 2027, proche du client.</span><span class="en">Looking for a sales internship for summer 2027, close to the client.</span></p>
+  <span class="scroll"><span class="ln"></span><span class="fr">Les projets</span><span class="en">The projects</span></span>
+</div></header>
+
+<section class="band"><div class="wrap">
+  <p class="q"><span class="fr">Un projet livré vaut mieux<br>que <span class="ac">dix commencés.</span></span><span class="en">One shipped project beats<br><span class="ac">ten started.</span></span></p>
+</div></section>
+
+<section class="proj" id="projets"><div class="wrap">
+  <div class="sec-h">
+    <div><h2><span class="fr">Les projets</span><span class="en">The projects</span></h2></div>
+    <p><span class="fr">Clique un projet pour le détail.</span><span class="en">Click a project for the details.</span></p>
+  </div>
+  <div class="tl" id="tl"></div>
+</div></section>
+
+<section class="profil" id="profil"><div class="wrap">
+  <div class="profil-in">
+    <div class="profil-txt">
+      <p class="lead"><span class="fr">Je vends et je code <span class="ac">ce que je vends.</span></span><span class="en">I sell and I code <span class="ac">what I sell.</span></span></p>
+      <div class="body">
+        <p><span class="fr">Je m'appelle Maxime. J'étudie la finance de marché à l'IESEG, mais je passe surtout mes journées à construire : des apps, des automatisations et des outils qui règlent de vrais problèmes.</span><span class="en">I'm Maxime. I study market finance at IESEG, but I spend most of my days building: apps, automations and tools that solve real problems.</span></p>
+        <p><span class="fr">Je suis <b>développeur</b> et <b>conseiller</b> à la fois. Je pense le produit, je le vends, puis je le livre moi-même, sans intermédiaire. J'aime autant convaincre un client que résoudre un bug à 2 h du matin.</span><span class="en">I'm a <b>developer</b> and an <b>advisor</b> at once. I design the product, I sell it, then I ship it myself, no middleman. I enjoy convincing a client as much as fixing a bug at 2 a.m.</span></p>
+        <p><span class="fr">Je livre. Je préfère une app en ligne sur l'App Store à dix idées laissées dans un carnet. Je finis, je publie, j'itère.</span><span class="en">I ship. I'd rather have one app live on the App Store than ten ideas left in a notebook. I finish, I publish, I iterate.</span></p>
+        <p><span class="fr">Ce que je cherche : des projets où je peux vendre <b>et</b> construire, apprendre vite et voir un impact réel.</span><span class="en">What I'm after: projects where I can sell <b>and</b> build, learn fast and see real impact.</span></p>
+      </div>
+    </div>
+    <figure class="portrait"><img src="img/maxime.jpg" alt="Maxime Gaillard" width="480" height="640" loading="lazy"><figcaption>Paris / Lille</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="cv" id="cv"><div class="wrap">
+  <div class="sec-h">
+    <div><h2><span class="fr">Parcours &amp; CV</span><span class="en">Background &amp; CV</span></h2></div>
+    <div class="cv-btns">
+      <span class="fr"><a class="btn p" href="cv/Maxime-Gaillard-CV-officiel-FR.pdf" download>CV officiel</a></span>
+      <span class="en"><a class="btn p" href="cv/Maxime-Gaillard-CV-officiel-EN.pdf" download>Official CV</a></span>
+      <span class="fr"><a class="btn g" href="cv/Maxime-Gaillard-CV-IA-FR.pdf" download>CV IA-compatible</a></span>
+      <span class="en"><a class="btn g" href="cv/Maxime-Gaillard-CV-IA-EN.pdf" download>AI-ready CV</a></span>
+    </div>
+  </div>
+  <div class="cv-grid">
+    <div class="cv-col">
+      <h3><span class="fr">Expérience</span><span class="en">Experience</span></h3>
+      <div class="cv-list">
+        <div class="cv-row"><span class="cv-year">2025 → <span class="fr">auj.</span><span class="en">now</span></span><div class="cv-what"><b><span class="fr">Fondateur &amp; développeur · GeoSnap · Cofondateur · CG Relais</span><span class="en">Founder &amp; developer · GeoSnap · Co-founder · CG Relais</span></b><span class="d"><span class="fr">Développement produit, conseil IA et vente.</span><span class="en">Product development, AI consulting and sales.</span></span></div></div>
+        <div class="cv-row"><span class="cv-year">2026</span><div class="cv-what"><b><span class="fr">Stage · BPCE, Achats &amp; Services</span><span class="en">Internship · BPCE, Procurement &amp; Services</span></b><span class="d"><span class="fr">Automatisation Excel (macros) et gestion de dossiers.</span><span class="en">Excel automation (macros) and records management.</span></span></div></div>
+        <div class="cv-row"><span class="cv-year">2023 → 2025</span><div class="cv-what"><b><span class="fr">Vendeur &amp; préparateur · Manon Marée</span><span class="en">Sales assistant · Manon Marée</span></b><span class="d"><span class="fr">Relation client, vente et préparation. Palaiseau.</span><span class="en">Client relations, sales and preparation. Palaiseau.</span></span></div></div>
+        <div class="cv-row"><span class="cv-year">2023</span><div class="cv-what"><b><span class="fr">Chargé de qualité · E.Leclerc</span><span class="en">Quality officer · E.Leclerc</span></b><span class="d"><span class="fr">Contrôle qualité et contenus vidéo promo. Belfort.</span><span class="en">Quality control and promo video content. Belfort.</span></span></div></div>
+        <div class="cv-row"><span class="cv-year">2023</span><div class="cv-what"><b><span class="fr">Stage découverte · Stellantis</span><span class="en">Discovery internship · Stellantis</span></b><span class="d"><span class="fr">Service Design et contrôle de gestion R&amp;D Europe.</span><span class="en">Service Design and management control, R&amp;D Europe.</span></span></div></div>
+        <div class="cv-row"><span class="cv-year">2022</span><div class="cv-what"><b><span class="fr">Serveur &amp; caissier · Petite Bretagne</span><span class="en">Server &amp; cashier · Petite Bretagne</span></b><span class="d"><span class="fr">Vente en anglais et gestion des stocks. New York.</span><span class="en">Sales in English and stock management. New York.</span></span></div></div>
+      </div>
+    </div>
+    <div class="cv-col">
+      <div class="cv-block"><h3><span class="fr">Formation</span><span class="en">Education</span></h3>
+        <div class="cv-list">
+          <div class="cv-row"><span class="cv-year">2025 → 2030</span><div class="cv-what"><b>IESEG School of Management</b><span class="d"><span class="fr">Programme Grande École (Master). Lille.</span><span class="en">Master in Management (Grande École). Lille.</span></span></div></div>
+          <div class="cv-row"><span class="cv-year">2022 → 2025</span><div class="cv-what"><b>Lycée International Paris-Saclay</b><span class="d"><span class="fr">Bac mention, section européenne anglais.</span><span class="en">Baccalaureate with honours, English section.</span></span></div></div>
+        </div>
+      </div>
+      <div class="cv-block"><h3><span class="fr">Langues</span><span class="en">Languages</span></h3>
+        <div class="langs">
+          <div class="lang"><span><span class="fr">Français</span><span class="en">French</span></span><em><span class="fr">Natif</span><span class="en">Native</span></em></div>
+          <div class="lang"><span><span class="fr">Anglais</span><span class="en">English</span></span><em>B2-C1 · IELTS 6.5</em></div>
+          <div class="lang"><span><span class="fr">Allemand</span><span class="en">German</span></span><em>B1-B2</em></div>
+        </div>
+      </div>
+      <div class="cv-block"><h3>Certifications</h3>
+        <div class="certs"><span>Bloomberg Market Concepts</span><span>Google Analytics</span><span><span class="fr">Cybercriminalité (UNODC)</span><span class="en">Cybercrime (UNODC)</span></span><span><span class="fr">Permis B</span><span class="en">Driving licence (B)</span></span></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <h2><span class="fr">Et si on <span class="ac">construisait</span><br>quelque chose ensemble ?</span><span class="en">What if we built<br>something <span class="ac">together</span>?</span></h2>
+  <p class="contact-sub"><span class="fr">Un projet, un stage ou une collaboration de marque ? Le plus simple, c'est LinkedIn. Je collabore avec des marques via des posts sponsorisés auprès de mon audience finance & tech ; le détail de mes offres est sur Passionfroot.</span><span class="en">A project, an internship or a brand collaboration? LinkedIn is easiest. I partner with brands through sponsored posts to my finance & tech audience; my full offers are on Passionfroot.</span></p>
+  <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="cform">
+    <input type="hidden" name="form-name" value="contact">
+    <p hidden><label>Ne pas remplir : <input name="bot-field"></label></p>
+    <div class="cf-row">
+      <input name="name" type="text" required data-fr="Nom" data-en="Name" placeholder="Nom" aria-label="Nom">
+      <input name="email" type="email" required data-fr="Email" data-en="Email" placeholder="Email" aria-label="Email">
+    </div>
+    <textarea name="message" required rows="4" data-fr="Ton message" data-en="Your message" placeholder="Ton message" aria-label="Message"></textarea>
+    <button class="btn p" type="submit"><span class="fr">Envoyer</span><span class="en">Send</span></button>
+  </form>
+  <div class="cbtns" style="margin-top:1.4rem;">
+    <a class="btn g" href="https://www.linkedin.com/in/maxime-rené-gaillard" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn g" id="emailBtn" href="mailto:maximegaillard@yahoo.com">Email</a>
+    <a class="btn g" href="https://dub.sh/maxime-site" target="_blank" rel="noopener">Passionfroot</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot-in"><span>© 2026 Maxime Gaillard</span><a href="mailto:maximegaillard@yahoo.com" class="foot-mail">maximegaillard@yahoo.com</a><span><span class="fr">Finance · Produit · Vente</span><span class="en">Finance · Product · Sales</span></span></div>
+</div></footer>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="ovTitle" tabindex="-1">
+  <div class="ov-top"><div class="in"><span class="k" id="ovKick"></span><button class="close" id="ovClose" aria-label="Fermer">×</button></div></div>
+  <div class="ov-body">
+    <h2 class="ov-title" id="ovTitle"></h2>
+    <p class="ov-tag" id="ovTag"></p>
+    <div class="ov-visual" id="ovVisual"></div>
+    <div class="ov-grid">
+      <div id="ovBlocks"></div>
+      <div class="ov-side">
+        <div id="ovStackWrap" class="ov-status" hidden><div class="lbl"><span class="fr">Stack &amp; outils</span><span class="en">Stack &amp; tools</span></div><div class="stack" id="ovStack"></div></div>
+        <div class="ov-status"><div class="lbl"><span class="fr">Statut</span><span class="en">Status</span></div><div id="ovStatus"></div></div>
+        <div id="ovLinkWrap" class="ov-link" hidden><a class="btn p" id="ovLink" target="_blank" rel="noopener"></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function isEn(){return document.body.classList.contains("en");}
+  var PROJECTS=[
+    {id:"geosnap",date:"2026",stype:"live",imgs:["img/geosnap-1.jpg","img/geosnap-2.jpg","img/geosnap-3.jpg"],stack:["React Native","Expo","Supabase"],href:"https://apps.apple.com/fr/app/geosnap-f56181/id6783998653",
+     fr:{kind:"Projet",title:"GeoSnap",tag:"Partage photo géolocalisé",status:"En ligne · App Store",link:"Voir sur l'App Store",blocks:[["Le problème","Nos souvenirs se perdent, coupés de l'endroit où on les a vécus."],["Ce que j'ai fait","Conçu, codé et publié l'appli en solo, de l'idée jusqu'au store."],["Le résultat","En ligne sur l'App Store, en amélioration continue."]]},
+     en:{kind:"Project",title:"GeoSnap",tag:"Location-based photo sharing",status:"Live · App Store",link:"View on the App Store",blocks:[["The problem","Our memories get lost, cut off from where we lived them."],["What I did","Designed, coded and shipped the app solo, from idea to the store."],["The result","Live on the App Store, improving continuously."]]}},
+    {id:"cg",date:"2026",stype:"go",imgs:["img/cg-relais.jpg"],stack:["Automatisation","IA","Conseil"],href:null,
+     fr:{kind:"Projet",title:"CG Relais",tag:"Conseil IA pour le transport",status:"En lancement",link:null,blocks:[["Le problème","Les PME du transport perdent des heures sur des tâches répétitives : devis, relances, mails."],["Ce que j'ai fait","Cofondateur. On audite les process, on automatise les tâches répétitives pour faire gagner du temps, puis on accompagne dans la durée."],["Le résultat","En lancement, premières PME accompagnées."]]},
+     en:{kind:"Project",title:"CG Relais",tag:"AI consulting for transport",status:"Launching",link:null,blocks:[["The problem","Transport SMEs lose hours on repetitive tasks: quotes, follow-ups, emails."],["What I did","Co-founder. We audit processes, automate repetitive tasks to save time, then support clients over time."],["The result","Launching, first SMEs onboarded."]]}},
+    {id:"bloomberg",date:"2026",stype:"done",imgs:["img/bloomberg.jpg"],stack:[],href:null,
+     fr:{kind:"Jalon",title:"Bloomberg certifié",tag:"Bloomberg Market Concepts",status:"Certifié",link:null,blocks:[["Ce que c'est","La certification Bloomberg Market Concepts : marchés, analyse financière, prise en main du terminal."],["Pourquoi ça compte","Elle ancre mon pied finance, juste à côté du produit et du code."]]},
+     en:{kind:"Milestone",title:"Bloomberg certified",tag:"Bloomberg Market Concepts",status:"Certified",link:null,blocks:[["What it is","The Bloomberg Market Concepts certification: markets, financial analysis, terminal basics."],["Why it matters","It anchors my finance side, right next to product and code."]]}},
+    {id:"linkedin",date:"2025",stype:"up",imgs:["img/linkedin.jpg"],stack:[],href:"https://www.linkedin.com/in/maxime-rené-gaillard",
+     fr:{kind:"Jalon",title:"4 500+ sur LinkedIn",tag:"Audience finance & tech",status:"Actif",link:"Voir mon LinkedIn",blocks:[["Ce que j'ai fait","Construit une audience d'étudiants et de jeunes pros en finance, consulting et tech, en publiant régulièrement."],["Le résultat","4 500+ abonnés et des collaborations de marque cadrées."]]},
+     en:{kind:"Milestone",title:"4,500+ on LinkedIn",tag:"Finance & tech audience",status:"Active",link:"See my LinkedIn",blocks:[["What I did","Grew an audience of students and young pros in finance, consulting and tech, by posting regularly."],["The result","4,500+ followers and structured brand collaborations."]]}},
+    {id:"web",date:"2025",stype:"done",imgs:[],stack:["Web","Marketing","Vente"],href:null,
+     fr:{kind:"Projet",title:"Web & e-commerce",tag:"Sites PME · boutiques",status:"Livré",link:null,blocks:[["Ce que j'ai fait","Avant les apps, j'ai livré des sites pour des PME et monté des boutiques e-commerce : tunnels de vente, marketing, acquisition."],["Le résultat","La vente et le web appris sur le terrain, avec de vrais clients."]]},
+     en:{kind:"Project",title:"Web & e-commerce",tag:"SME sites · stores",status:"Shipped",link:null,blocks:[["What I did","Before apps, I delivered websites for SMEs and built e-commerce stores: sales funnels, marketing, acquisition."],["The result","Sales and the web learned on the ground, with real clients."]]}}
+  ];
+
+  var tl=document.getElementById("tl");
+  PROJECTS.forEach(function(p){
+    var b=document.createElement("button"); b.className="tl-item"; b.setAttribute("aria-haspopup","dialog");
+    b.innerHTML='<span class="tl-date">'+p.date+'</span><span class="tl-main">'
+      +'<span class="tl-kind"><span class="fr">'+p.fr.kind+'</span><span class="en">'+p.en.kind+'</span></span>'
+      +'<span class="tl-title"><span class="fr">'+p.fr.title+'</span><span class="en">'+p.en.title+'</span></span>'
+      +'<span class="tl-tag"><span class="fr">'+p.fr.tag+'</span><span class="en">'+p.en.tag+'</span></span></span>'
+      +'<span class="tl-right"><span class="chip '+p.stype+'"><span class="fr">'+p.fr.status+'</span><span class="en">'+p.en.status+'</span></span><span class="tl-plus">+</span></span>';
+    b.addEventListener("click",function(){openP(p);});
+    tl.appendChild(b);
+  });
+
+  // préchargement des visuels au chargement du site (ouverture instantanée)
+  (function(){var seen={};function pre(){PROJECTS.forEach(function(p){(p.imgs||[]).forEach(function(s){if(seen[s])return;seen[s]=1;var im=new Image();im.src=s;});});}
+   if(document.readyState==="complete")pre();else window.addEventListener("load",pre);})();
+
+  var ov=document.getElementById("ov"), lastFocus=null;
+  function openP(p){
+    var L=isEn()?p.en:p.fr;
+    lastFocus=document.activeElement;
+    document.getElementById("ovKick").textContent=p.date+" · "+L.kind;
+    document.getElementById("ovTitle").textContent=L.title;
+    document.getElementById("ovTag").textContent=L.tag;
+    var vis=document.getElementById("ovVisual");
+    if(p.imgs&&p.imgs.length){vis.style.display="";var imgs=p.imgs.map(function(s){return '<img src="'+s+'" alt="'+L.title+'">';}).join("");if(p.imgs.length>1){vis.className="ov-visual gallery-wrap";vis.innerHTML='<div class="ov-gallery">'+imgs+'</div>';}else{vis.className="ov-visual solo";vis.innerHTML=imgs;}}
+    else{vis.className="ov-visual";vis.style.display="none";vis.innerHTML="";}
+    var bl=document.getElementById("ovBlocks"); bl.innerHTML="";
+    L.blocks.forEach(function(x){var d=document.createElement("div");d.className="ov-block";d.innerHTML="<h4>"+x[0]+"</h4><p>"+x[1]+"</p>";bl.appendChild(d);});
+    var sw=document.getElementById("ovStackWrap");
+    if(p.stack&&p.stack.length){sw.hidden=false;document.getElementById("ovStack").innerHTML=p.stack.map(function(s){return "<span>"+s+"</span>";}).join("");}else sw.hidden=true;
+    document.getElementById("ovStatus").innerHTML='<span class="chip '+p.stype+'">'+L.status+'</span>';
+    var lw=document.getElementById("ovLinkWrap"),la=document.getElementById("ovLink");
+    if(L.link&&p.href){lw.hidden=false;la.textContent=L.link;la.href=p.href;}else lw.hidden=true;
+    ov.classList.remove("open"); void ov.offsetWidth; ov.classList.add("open"); document.body.classList.add("locked");
+    document.getElementById("ovClose").focus();
+  }
+  function closeOv(){ov.classList.remove("open");document.body.classList.remove("locked");if(lastFocus)lastFocus.focus();}
+  document.getElementById("ovClose").addEventListener("click",closeOv);
+  ov.addEventListener("click",function(e){if(e.target===ov)closeOv();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&ov.classList.contains("open"))closeOv();});
+
+  function updateLabels(){
+    var en=document.body.classList.contains("en"), dark=document.documentElement.dataset.theme==="dark";
+    document.getElementById("langCur").textContent=en?"English":"Français";
+    document.getElementById("themeCur").textContent=dark?(en?"Dark":"Sombre"):(en?"Light":"Clair");
+    document.querySelectorAll("#langDd .dd-opt").forEach(function(o){o.setAttribute("aria-selected",String((o.dataset.lang==="en")===en));});
+    document.querySelectorAll("#themeDd .dd-opt").forEach(function(o){o.setAttribute("aria-selected",String(o.dataset.theme===document.documentElement.dataset.theme));});
+    document.querySelectorAll("[data-fr][data-en]").forEach(function(el){if("placeholder" in el)el.placeholder=en?el.dataset.en:el.dataset.fr;});
+  }
+  (function(){
+    var sl=localStorage.getItem("lang");
+    var en=sl?sl==="en":((navigator.language||"fr").toLowerCase().indexOf("fr")!==0);
+    if(en){document.body.classList.add("en");document.documentElement.lang="en";}
+    var st=localStorage.getItem("theme"); if(st){document.documentElement.dataset.theme=st;}
+    updateLabels();
+  })();
+  function setLang(en){document.body.classList.toggle("en",en);document.documentElement.lang=en?"en":"fr";localStorage.setItem("lang",en?"en":"fr");updateLabels();}
+  function setThemeVal(t){document.documentElement.dataset.theme=t;localStorage.setItem("theme",t);updateLabels();}
+  function closeDds(){document.querySelectorAll(".dd.open").forEach(function(o){o.classList.remove("open");o.querySelector(".dd-btn").setAttribute("aria-expanded","false");});}
+  function wireDd(ddId,btnId){var dd=document.getElementById(ddId),btn=document.getElementById(btnId);btn.addEventListener("click",function(e){e.stopPropagation();var willOpen=!dd.classList.contains("open");closeDds();if(willOpen){dd.classList.add("open");btn.setAttribute("aria-expanded","true");}});}
+  wireDd("langDd","langBtn"); wireDd("themeDd","themeBtn");
+  document.querySelectorAll("#langDd .dd-opt").forEach(function(o){o.addEventListener("click",function(){setLang(o.dataset.lang==="en");closeDds();});});
+  document.querySelectorAll("#themeDd .dd-opt").forEach(function(o){o.addEventListener("click",function(){setThemeVal(o.dataset.theme);closeDds();});});
+  document.addEventListener("click",closeDds);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDds();});
+
+  var burger=document.getElementById("burger"), navEl=document.querySelector("nav");
+  function closeMenu(){navEl.classList.remove("open");burger.setAttribute("aria-expanded","false");}
+  burger.addEventListener("click",function(e){e.stopPropagation();var open=navEl.classList.toggle("open");burger.setAttribute("aria-expanded",open?"true":"false");});
+  document.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",closeMenu);});
+  document.addEventListener("click",function(e){if(navEl.classList.contains("open")&&!navEl.contains(e.target))closeMenu();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMenu();});
+
+  var pb=document.getElementById("progress");
+  addEventListener("scroll",function(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;pb.style.width=(max>0?(h.scrollTop/max)*100:0)+"%";},{passive:true});
+
+  (function(){
+    if(!("IntersectionObserver" in window))return;
+    var links={};document.querySelectorAll(".nav-links a").forEach(function(a){var id=a.getAttribute("href").slice(1);if(id)links[id]=a;});
+    var spy=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove("active");if(links[e.target.id])links[e.target.id].classList.add("active");}});},{rootMargin:"-45% 0px -50% 0px"});
+    document.querySelectorAll("section[id]").forEach(function(s){spy.observe(s);});
+  })();
+
+  var eb=document.getElementById("emailBtn");
+  if(eb)eb.addEventListener("click",function(){try{navigator.clipboard.writeText("maximegaillard@yahoo.com");}catch(e){}var t=eb.textContent;eb.textContent=isEn()?"Copied ✓":"Copié ✓";setTimeout(function(){eb.textContent=t;},1600);});
+  var cf=document.getElementById("contactForm");
+  if(cf)cf.addEventListener("submit",function(e){e.preventDefault();var body=new URLSearchParams(new FormData(cf)).toString();fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body}).then(function(){cf.innerHTML='<p class="form-ok"><span class="fr">Merci, ton message est parti. Je réponds vite.</span><span class="en">Thanks, your message is on its way. I reply fast.</span></p>';}).catch(function(){cf.innerHTML='<p class="form-ok"><span class="fr">Message envoyé.</span><span class="en">Message sent.</span></p>';});});
+</script>
+</body></html>

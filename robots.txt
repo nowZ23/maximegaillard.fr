@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://maximegaillard.fr/sitemap.xml
