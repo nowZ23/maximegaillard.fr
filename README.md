@@ -14,6 +14,12 @@ C'est un choix, pas un raccourci : le site tient en un fichier, il n'y a rien à
 - **Contenu** : les projets sont un tableau `PROJECTS` en fin de fichier. Ajouter un projet = ajouter un objet.
 - **Formulaire** : Netlify Forms, envoi en `fetch` sans rechargement.
 
+## Chiffres à tenir à jour
+
+Le compteur d'abonnés LinkedIn est écrit en dur à **5 endroits** dans `index.html` : les deux balises `meta` (description et `og:description`), le chapô du hero en FR et en EN, et le tableau `PROJECTS` (titre plus bloc « Le résultat »). Chercher `4 516` pour les trouver tous.
+
+Le chiffre est daté volontairement. Un nombre rond et sans date se lit comme du marketing, un nombre exact et daté se vérifie.
+
 ## Développement
 
 ```bash
