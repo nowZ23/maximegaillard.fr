@@ -1,6 +1,7 @@
 # Dossier local Netlify
 .netlify
 .DS_Store
+node_modules
 
 # Sauvegardes locales (l'historique git les remplace)
 index.backup*.html
