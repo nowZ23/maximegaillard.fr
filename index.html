@@ -5,18 +5,18 @@
 <link rel="canonical" href="https://maximegaillard.fr/">
 <meta name="theme-color" content="#f4f2ec" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b0b0d" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ff4d2e'/%3E%3Ctext x='50' y='70' font-size='52' font-family='system-ui' font-weight='800' fill='%23fff' text-anchor='middle'%3EMG%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23d8401f'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-family='Arial Black,Helvetica,sans-serif' font-weight='900' font-size='54' letter-spacing='-3' fill='white'%3EMG%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Maxime Gaillard · Développeur, conseiller & finance">
 <meta property="og:description" content="Développeur et conseiller, étudiant en finance. Une app sur l'App Store, une boîte de conseil IA, 5 000+ abonnés sur LinkedIn.">
 <meta property="og:url" content="https://maximegaillard.fr/">
-<meta property="og:image" content="https://maximegaillard.fr/img/og.jpg">
+<meta property="og:image" content="https://maximegaillard.fr/img/og-v2.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://maximegaillard.fr/img/og.jpg">
+<meta name="twitter:image" content="https://maximegaillard.fr/img/og-v2.jpg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/instrument-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -231,11 +231,106 @@
   .foot-src{color:var(--mut);}
   .foot-src:hover{color:var(--accent);}
   .foot-mail:hover{color:var(--accent);}
+
+  /* ===== refonte visuelle (oct. 2026) ===== */
+  :root[data-theme="light"]{--green:#0e7a45;--band-bg:#18150f;--band-ink:#f4f2ec;--band-ac:#ff6a47;}
+  :root[data-theme="dark"]{--band-bg:#f4f2ec;--band-ink:#18150f;--band-ac:#d8401f;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.28;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .35 0 0 0 0 .3 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  :root[data-theme="dark"] body::before{display:none;}
+  /* nav pilule */
+  nav{position:sticky;top:12px;background:transparent;border:0;backdrop-filter:none;}
+  .nav-in{height:auto;margin:0 auto;max-width:900px;padding:8px 8px 8px 22px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--panel) 86%,transparent);backdrop-filter:blur(12px);box-shadow:0 14px 40px -24px rgba(0,0,0,.5);}
+  nav .wrap.nav-in{padding:8px 8px 8px 22px;}
+  .brand{display:flex;align-items:center;gap:.55rem;}
+  .brand .mk{height:26px;width:auto;aspect-ratio:190/110;}
+  .brand .mk text{font-family:var(--disp);font-weight:800;font-size:88px;letter-spacing:-5px;fill:var(--ink);}
+  .brand .mk tspan{fill:var(--accent);}
+  .nav-links a.active::after{display:none;}
+  .nav-links a[href="#contact"]{background:var(--accent);color:#fff;border-radius:999px;padding:.5rem 1.15rem;font-weight:600;}
+  .nav-links a[href="#contact"]:hover{color:#fff;filter:brightness(1.08);}
+  .nav-links{align-items:center;}
+  @media(max-width:760px){
+    nav{top:8px;}
+    nav .wrap.nav-in{margin:0 12px;max-width:none;}
+    .nav-in{padding:6px 8px 6px 16px!important;position:relative;}
+    .nav-r{top:calc(100% + 8px);border:1px solid var(--line);border-radius:22px;box-shadow:0 20px 50px -24px rgba(0,0,0,.5);}
+    .nav-links a[href="#contact"]{background:transparent;color:var(--accent);border-radius:0;padding:.85rem 0;}
+  }
+  /* hero */
+  .hero{padding:clamp(3rem,9vh,6rem) 0 clamp(3rem,7vh,5rem);}
+  .hero-in{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  h1{font-size:clamp(2.8rem,6.6vw,5.4rem);line-height:.95;}
+  h1 .o{-webkit-text-stroke:0;color:inherit;}
+  .hero-ph{position:relative;justify-self:center;margin:0;isolation:isolate;}
+  .hero-ph img{display:block;width:clamp(230px,26vw,340px);aspect-ratio:4/5;object-fit:cover;object-position:center 12%;border-radius:28px 28px 120px 28px;transform:rotate(2.5deg);box-shadow:0 40px 80px -36px rgba(0,0,0,.5);}
+  .hero-ph::before{content:"";position:absolute;inset:18px -18px -18px 18px;border-radius:28px 28px 120px 28px;background:var(--accent);transform:rotate(-2deg);z-index:-1;}
+  .hero-chip{position:absolute;left:-44px;bottom:56px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:.7rem 1rem;box-shadow:0 18px 40px -22px rgba(0,0,0,.5);}
+  .hero-chip b{display:block;font-family:var(--disp);font-size:1.7rem;line-height:1;letter-spacing:-.03em;}
+  .hero-chip span{font-size:.8rem;color:var(--mut);}
+  @media(max-width:820px){.hero-in{grid-template-columns:1fr;}.hero-ph{order:-1;justify-self:start;margin:.4rem 18px 1.2rem 0;}.hero-ph img{width:min(46vw,190px);}.hero-chip{left:auto;right:-8px;bottom:26px;}}
+  /* manifeste inversé */
+  .band{background:var(--band-bg);color:var(--band-ink);border:0;}
+  .band .q .ac{color:var(--band-ac);}
+  /* projets */
+  .tl-item{border-radius:20px;border-top-color:transparent;padding-left:26px;padding-right:26px;}
+  .tl-item+.tl-item{border-top:1px solid var(--line);}
+  .tl-item:hover,.tl-item:focus-visible{padding-left:26px;background:color-mix(in srgb,var(--c) 9%,var(--bg));border-color:transparent;}
+  .tl-item:hover+.tl-item,.tl-item:focus-visible+.tl-item{border-top-color:transparent;}
+  .tl-item::before{display:none;}
+  .tl-item:hover .tl-title,.tl-item:focus-visible .tl-title{color:var(--c);}
+  .tl-item:last-child{border-bottom:0;}
+  .tl-title{display:flex;align-items:center;gap:.6rem;}
+  .pdot{width:.42em;height:.42em;min-width:.42em;border-radius:50%;background:var(--c);display:inline-block;}
+  .tl-item:hover .tl-plus{color:var(--c);}
+  /* profil : chiffres clés */
+  .profil-in{grid-template-columns:.7fr 1.3fr;align-items:start;}
+  .stats{position:sticky;top:96px;display:grid;gap:0;border-top:1px solid var(--line);}
+  .stats div{padding:1.4rem 0;border-bottom:1px solid var(--line);}
+  .stats b{display:block;font-family:var(--disp);font-weight:800;font-size:clamp(2.6rem,5vw,3.8rem);letter-spacing:-.04em;line-height:1;}
+  .stats b.o{color:var(--accent);}
+  .stats span{font-size:.98rem;color:var(--mut);}
+  @media(max-width:820px){.profil-in{grid-template-columns:1fr;}.stats{position:static;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:.4rem;}.stats div{border-bottom:0;padding:1rem .6rem 1rem 0;}.stats b{font-size:1.9rem;}.stats span{font-size:.8rem;}}
+  /* CV : frise */
+  .cv-grid .cv-list{border-top:0;position:relative;padding-left:44px;}
+  .cv-grid .cv-list::before{content:"";position:absolute;left:11px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--accent),var(--line) 55%);}
+  .cv-grid .cv-row{position:relative;border-bottom:0;padding:.2rem 0 1.7rem;}
+  .cv-grid .cv-row::before{content:"";position:absolute;left:-40px;top:.35rem;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--line);}
+  .cv-grid .cv-list .cv-row:first-child::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 18%,transparent);}
+  .lang{display:grid;grid-template-columns:1fr auto;border-bottom:0;padding-bottom:0;gap:.35rem .8rem;}
+  .lang u{grid-column:1/-1;display:block;height:6px;border-radius:6px;background:var(--line);position:relative;text-decoration:none;}
+  .lang u::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w);border-radius:6px;background:var(--ink);}
+  .langs{gap:1rem;}
+  .certs>span{background:var(--panel);}
+  /* contact : bloc orange */
+  .contact{border-top:0;padding:clamp(1rem,3vw,2rem) 0 clamp(2.5rem,6vw,4rem);}
+  .cb{background:var(--accent);color:#fff;border-radius:clamp(26px,4vw,40px);padding:clamp(2rem,6vw,5.2rem) clamp(1.4rem,5vw,4.4rem);position:relative;overflow:hidden;}
+  .cb::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none;}
+  .cb>*{position:relative;z-index:1;}
+  .contact h2 .ac{color:inherit;}
+  .contact-sub{color:rgba(255,255,255,.92);}
+  .cb .cform input,.cb .cform textarea{background:rgba(255,255,255,.96);color:#18150f;border-color:transparent;}
+  .cb .cform input:focus,.cb .cform textarea:focus{border-color:#18150f;}
+  .cb .cform input::placeholder,.cb .cform textarea::placeholder{color:#6d655a;}
+  .cb .btn.p{background:#fff;border-color:#fff;color:var(--accent);}
+  .cb .btn.g{border-color:rgba(255,255,255,.6);color:#fff;}
+  .cb .btn.g:hover{background:#fff;color:var(--accent);}
+  .cb .form-ok{color:#fff;}
+  /* footer */
+  footer{padding:3rem 0 2.4rem;font-family:var(--body);font-size:.95rem;letter-spacing:0;}
+  .fg{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1.2fr;gap:2.4rem;}
+  .fg h5{font-family:var(--disp);font-size:1rem;color:var(--ink);margin-bottom:.8rem;font-weight:700;}
+  .fg [hidden]{display:none!important;}
+  .fg a,.fg p{display:block;margin-bottom:.4rem;color:var(--mut);}
+  .fg a:hover{color:var(--accent);}
+  .fbig{font-family:var(--disp);font-weight:800;font-size:1.6rem;letter-spacing:-.03em;color:var(--ink);}
+  .fg [href*="github.com"]{font-family:var(--mono);font-size:.78rem;word-break:break-all;}
+  .copy{margin-top:2rem;font-family:var(--mono);font-size:.76rem;color:var(--mut);}
+  @media(max-width:760px){.fg{grid-template-columns:1fr 1fr;}}
 </style></head>
 <body>
 <div id="progress" aria-hidden="true"></div>
 <nav><div class="wrap nav-in">
-  <a class="brand" id="brand" href="#top">Maxime <b>Gaillard</b></a>
+  <a class="brand" id="brand" href="#top"><svg class="mk" viewBox="0 0 190 110" aria-hidden="true"><text x="95" y="82" text-anchor="middle">mg<tspan>.</tspan></text></svg><span>Maxime <b>Gaillard</b></span></a>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="nav-r">
     <div class="nav-links">
@@ -262,11 +357,13 @@
 </div></nav>
 
 <a id="top"></a>
-<header class="hero"><div class="wrap">
+<header class="hero"><div class="wrap hero-in"><div class="hero-txt">
   <h1><span class="fr">De <span class="o">l'idée</span><br>au <span class="ac">produit livré</span>.</span><span class="en">From <span class="o">idea</span><br>to <span class="ac">shipped product</span>.</span></h1>
   <p class="deck"><span class="fr">Étudiant en finance à l'IESEG. Une appli <b>en ligne sur l'App Store</b>, une boîte de conseil IA, une audience de <b>5 000+</b> abonnés sur LinkedIn.</span><span class="en">Finance student at IESEG. An app <b>live on the App Store</b>, an AI consulting firm, an audience of <b>5,000+</b> followers on LinkedIn.</span></p>
   <p class="avail"><span class="dot"></span><span class="fr">En recherche d'un stage en vente pour l'été 2027, proche du client.</span><span class="en">Looking for a sales internship for summer 2027, close to the client.</span></p>
   <span class="scroll"><span class="ln"></span><span class="fr">Les projets</span><span class="en">The projects</span></span>
+</div>
+  <figure class="hero-ph"><img src="img/maxime.jpg" alt="Maxime Gaillard" width="480" height="640"><figcaption class="hero-chip"><b>5 000+</b><span class="fr">abonnés LinkedIn</span><span class="en">LinkedIn followers</span></figcaption></figure>
 </div></header>
 
 <section class="band"><div class="wrap">
@@ -283,6 +380,7 @@
 
 <section class="profil" id="profil"><div class="wrap">
   <div class="profil-in">
+    <aside class="stats"><div><b class="o">5 000+</b><span class="fr">abonnés LinkedIn</span><span class="en">LinkedIn followers</span></div><div><b>1</b><span class="fr">app en ligne sur l'App Store</span><span class="en">app live on the App Store</span></div><div><b>6</b><span class="fr">expériences terrain depuis 2022</span><span class="en">field experiences since 2022</span></div></aside>
     <div class="profil-txt">
       <p class="lead"><span class="fr">Je vends et je code <span class="ac">ce que je vends.</span></span><span class="en">I sell and I code <span class="ac">what I sell.</span></span></p>
       <div class="body">
@@ -292,7 +390,6 @@
         <p><span class="fr">Ce que je cherche : des projets où je peux vendre <b>et</b> construire, apprendre vite et voir un impact réel.</span><span class="en">What I'm after: projects where I can sell <b>and</b> build, learn fast and see real impact.</span></p>
       </div>
     </div>
-    <figure class="portrait"><img src="img/maxime.jpg" alt="Maxime Gaillard" width="480" height="640" loading="lazy"><figcaption>Paris / Lille</figcaption></figure>
   </div>
 </div></section>
 
@@ -327,9 +424,9 @@
       </div>
       <div class="cv-block"><h3><span class="fr">Langues</span><span class="en">Languages</span></h3>
         <div class="langs">
-          <div class="lang"><span><span class="fr">Français</span><span class="en">French</span></span><em><span class="fr">Natif</span><span class="en">Native</span></em></div>
-          <div class="lang"><span><span class="fr">Anglais</span><span class="en">English</span></span><em>B2-C1 · TOEFL 92</em></div>
-          <div class="lang"><span><span class="fr">Allemand</span><span class="en">German</span></span><em>B1-B2</em></div>
+          <div class="lang"><span><span class="fr">Français</span><span class="en">French</span></span><em><span class="fr">Natif</span><span class="en">Native</span></em><u style="--w:100%"></u></div>
+          <div class="lang"><span><span class="fr">Anglais</span><span class="en">English</span></span><em>B2-C1 · TOEFL 92</em><u style="--w:82%"></u></div>
+          <div class="lang"><span><span class="fr">Allemand</span><span class="en">German</span></span><em>B1-B2</em><u style="--w:55%"></u></div>
         </div>
       </div>
       <div class="cv-block"><h3>Certifications</h3>
@@ -339,7 +436,7 @@
   </div>
 </div></section>
 
-<section class="contact" id="contact"><div class="wrap">
+<section class="contact" id="contact"><div class="wrap"><div class="cb">
   <h2><span class="fr">Et si on <span class="ac">construisait</span><br>quelque chose ensemble ?</span><span class="en">What if we built<br>something <span class="ac">together</span>?</span></h2>
   <p class="contact-sub"><span class="fr">Un projet, un stage ou une collaboration de marque ? Le plus simple, c'est LinkedIn. Je collabore avec des marques via des posts sponsorisés auprès de mon audience finance & tech ; le détail de mes offres est sur Passionfroot.</span><span class="en">A project, an internship or a brand collaboration? LinkedIn is easiest. I partner with brands through sponsored posts to my finance & tech audience; my full offers are on Passionfroot.</span></p>
   <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="cform">
@@ -357,10 +454,16 @@
     <a class="btn g" id="emailBtn" href="mailto:maximegaillard@yahoo.com">Email</a>
     <a class="btn g" href="https://dub.sh/maxime-site" target="_blank" rel="noopener">Passionfroot</a>
   </div>
-</div></section>
+</div></div></section>
 
 <footer><div class="wrap">
-  <div class="foot-in"><span>© 2026 Maxime Gaillard</span><a href="mailto:maximegaillard@yahoo.com" class="foot-mail">maximegaillard@yahoo.com</a><span><span class="fr">Finance · Produit · Vente</span><span class="en">Finance · Product · Sales</span></span><a class="foot-src" id="footSrc" href="https://github.com/nowZ23/maximegaillard.fr" target="_blank" rel="noopener" hidden></a></div>
+  <div class="fg">
+    <div><div class="fbig">Maxime Gaillard</div><p><span class="fr">Finance · Produit · Vente</span><span class="en">Finance · Product · Sales</span></p></div>
+    <div><h5>Navigation</h5><a href="#projets"><span class="fr">Projets</span><span class="en">Projects</span></a><a href="#profil"><span class="fr">Profil</span><span class="en">Profile</span></a><a href="#cv">CV</a><a href="#contact">Contact</a></div>
+    <div><h5><span class="fr">Liens</span><span class="en">Links</span></h5><a href="https://www.linkedin.com/in/maxime-rené-gaillard" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:maximegaillard@yahoo.com" class="foot-mail">maximegaillard@yahoo.com</a><a href="https://dub.sh/maxime-site" target="_blank" rel="noopener">Passionfroot</a></div>
+    <div><h5><span class="fr">Code source</span><span class="en">Source code</span></h5><a class="foot-src" id="footSrc" href="https://github.com/nowZ23/maximegaillard.fr" target="_blank" rel="noopener" hidden></a><a href="https://github.com/nowZ23/maximegaillard.fr" target="_blank" rel="noopener">github.com/nowZ23/maximegaillard.fr</a></div>
+  </div>
+  <p class="copy">© 2026 Maxime Gaillard</p>
 </div></footer>
 
 <div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="ovTitle" tabindex="-1">
@@ -401,11 +504,12 @@
   ];
 
   var tl=document.getElementById("tl");
+  var PCOL={geosnap:"#d8401f",cg:"#0e7a45",bloomberg:"#2c5fd0",linkedin:"#b7761b",web:"#6d655a"};
   PROJECTS.forEach(function(p){
-    var b=document.createElement("button"); b.className="tl-item"; b.setAttribute("aria-haspopup","dialog");
+    var b=document.createElement("button"); b.className="tl-item";b.style.setProperty("--c",PCOL[p.id]||"var(--accent)"); b.setAttribute("aria-haspopup","dialog");
     b.innerHTML='<span class="tl-date">'+p.date+'</span><span class="tl-main">'
       +'<span class="tl-kind"><span class="fr">'+p.fr.kind+'</span><span class="en">'+p.en.kind+'</span></span>'
-      +'<span class="tl-title"><span class="fr">'+p.fr.title+'</span><span class="en">'+p.en.title+'</span></span>'
+      +'<span class="tl-title"><i class="pdot"></i><span class="fr">'+p.fr.title+'</span><span class="en">'+p.en.title+'</span></span>'
       +'<span class="tl-tag"><span class="fr">'+p.fr.tag+'</span><span class="en">'+p.en.tag+'</span></span></span>'
       +'<span class="tl-right"><span class="chip '+p.stype+'"><span class="fr">'+p.fr.status+'</span><span class="en">'+p.en.status+'</span></span><span class="tl-plus">+</span></span>';
     b.addEventListener("click",function(){openP(p);});
