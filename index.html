@@ -70,7 +70,6 @@
   .hero{padding:clamp(4rem,13vh,9rem) 0 clamp(3rem,8vh,6rem);}
   @media(max-width:680px){.hero{padding-top:2.4rem;}section{padding-top:clamp(2.6rem,7vw,4rem);padding-bottom:clamp(2.6rem,7vw,4rem);}}
   h1{font-family:var(--disp);font-weight:800;font-size:clamp(3rem,10vw,8rem);line-height:.94;letter-spacing:-.04em;text-wrap:balance;}
-  h1 .o{-webkit-text-stroke:2px var(--stroke);color:transparent;}
   h1 .ac{color:var(--accent);}
   .deck{margin-top:clamp(1.8rem,4vw,2.8rem);font-size:clamp(1.1rem,1.7vw,1.5rem);color:var(--mut);max-width:46ch;line-height:1.45;}
   .deck b{color:var(--ink);font-weight:600;}
@@ -260,7 +259,6 @@
   .hero{padding:clamp(3rem,9vh,6rem) 0 clamp(3rem,7vh,5rem);}
   .hero-in{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
   h1{font-size:clamp(2.8rem,6.6vw,5.4rem);line-height:.95;}
-  h1 .o{-webkit-text-stroke:0;color:inherit;}
   .hero-ph{position:relative;justify-self:center;margin:0;isolation:isolate;}
   .hero-ph img{display:block;width:clamp(230px,26vw,340px);aspect-ratio:4/5;object-fit:cover;object-position:center 12%;border-radius:28px 28px 120px 28px;transform:rotate(2.5deg);box-shadow:0 40px 80px -36px rgba(0,0,0,.5);}
   .hero-ph::before{content:"";position:absolute;inset:18px -18px -18px 18px;border-radius:28px 28px 120px 28px;background:var(--accent);transform:rotate(-2deg);z-index:-1;}
@@ -351,18 +349,76 @@
   .fg [href*="github.com"]{font-family:var(--body);font-size:.95rem;word-break:normal;overflow-wrap:anywhere;}
   .fg .foot-src{color:var(--green);font-weight:500;}
   .fg .foot-src::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:.5rem;vertical-align:middle;}
+
+  /* ===== système de boutons (06/10) =====
+     primaire plein · secondaire contouré · tertiaire en lien texte. Rayon 12 px, 40 px de haut (44 px sous 720 px),
+     états repos / survol / focus clavier / actif / désactivé. Les bascules (langue, thème) restent des pilules. */
+  :root{--btn-h:40px;--btn-r:12px}
+  :root[data-theme="light"]{--fill:#c93a1a;--ac-t:#b8331a;}
+  :root[data-theme="dark"]{--fill:#c93a1a;--ac-t:#ff4d2e;}
+  @media(max-width:720px){:root{--btn-h:44px}}
+  .btn,.avail-cta,.nav-links a[href="#contact"],.close{box-sizing:border-box;min-height:var(--btn-h);border-radius:var(--btn-r);padding:0 1.25rem;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--body);font-weight:600;font-size:1rem;line-height:1.2;text-align:center;text-decoration:none;cursor:pointer;transition:background .15s,color .15s,border-color .15s,filter .15s,transform .1s;}
+  .btn:active,.avail-cta:active,.nav-links a[href="#contact"]:active,.close:active{transform:scale(.98);}
+  .btn:focus-visible,.avail-cta:focus-visible,.nav-links a:focus-visible,.close:focus-visible,.burger:focus-visible,.tbtn:focus-visible,.dd-opt:focus-visible,.car-b:focus-visible,.brand:focus-visible{outline:2px solid var(--ac-t);outline-offset:2px;}
+  .avail-cta:focus-visible,.cb .btn:focus-visible{outline-color:#fff;}
+  .btn[disabled],.btn[aria-disabled="true"],button:disabled{opacity:.45;cursor:not-allowed;pointer-events:none;}
+  /* primaire : plein */
+  .btn.p{background:var(--fill);border:1.5px solid var(--fill);color:#fff;}
+  .btn.p:hover{filter:brightness(1.1);}
+  .avail-cta{background:#fff;border:1.5px solid #fff;color:#0e7a45;animation:availRing 1.6s ease-out 1.4s 5;}
+  .avail-cta:hover{background:#18150f;border-color:#18150f;color:#fff;}
+  /* secondaire : contouré */
+  .btn.g{background:transparent;border:1.5px solid var(--ink);color:var(--ink);}
+  .btn.g:hover{background:var(--ink);color:var(--bg);}
+  .nav-links a[href="#contact"]{background:transparent;border:1.5px solid var(--ac-t);color:var(--ac-t);padding:0 1.1rem;font-size:.92rem;}
+  .nav-links a[href="#contact"]:hover{background:var(--fill);border-color:var(--fill);color:#fff;filter:none;}
+  .close{width:auto;height:auto;background:transparent;border:1.5px solid var(--ink);color:var(--ink);}
+  .close:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);transform:none;}
+  /* bloc contact : sur fond plein, le primaire s'inverse */
+  .cb{background:var(--fill);}
+  .contact-sub{color:#fff;}
+  .cb .btn.p{background:#fff;border-color:#fff;color:var(--fill);}
+  .cb .btn.p:hover{filter:none;background:#18150f;border-color:#18150f;color:#fff;}
+  .cb .btn.g{border-color:#fff;color:#fff;}
+  .cb .btn.g:hover{background:#fff;color:var(--fill);}
+  .avail{border-radius:18px;}
+  /* menu mobile : libellé « Menu » visible, zones de 44 px */
+  .burger .bars{display:flex;flex-direction:column;gap:5px;}
+  .burger-l{font-weight:600;font-size:.95rem;color:var(--ink);}
+  .cv-year,.stats b.o,.brand b,.certs .permis{color:var(--ac-t);}
+  .dd-caret{color:var(--ink);}
+  .car-b{width:44px;height:44px;border-radius:var(--btn-r);}
+  @media(max-width:760px){
+    .burger{flex-direction:row;width:auto;height:auto;min-height:44px;padding:0 10px;gap:.6rem;border-radius:var(--btn-r);}
+    .nav-links a{min-height:44px;display:flex;align-items:center;}
+    .nav-links a[href="#contact"]{margin-top:.8rem;justify-content:center;border-bottom:1.5px solid var(--ac-t);}
+    .tbtn,.dd-opt{min-height:44px;}
+    .nav-r .dd{align-self:stretch;}
+    .nav-r .dd .tbtn{width:100%;justify-content:space-between;}
+  }
+  @media(max-width:560px){
+    .btn{width:100%;}
+    .cv-btns,.cbtns{flex-direction:column;align-items:stretch;gap:.6rem;}
+    .cform button{justify-self:stretch;}
+    .cv-btns>span{display:contents;}
+    .cv-btns{width:100%;}
+  }
+  /* pied de page : la grille à 4 colonnes écrasait la règle mobile et élargissait la page (564 px à 390 px) */
+  .fg>*{min-width:0;overflow-wrap:anywhere;}
+  @media(max-width:760px){.fg{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.fg{grid-template-columns:1fr;}}
 </style></head>
 <body>
 <div id="progress" aria-hidden="true"></div>
 <nav><div class="wrap nav-in">
   <a class="brand" id="brand" href="#top"><svg class="mk" viewBox="0 0 190 110" aria-hidden="true"><text x="95" y="82" text-anchor="middle">mg<tspan>.</tspan></text></svg><span>Maxime <b>Gaillard</b></span></a>
-  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="burger" id="burger" aria-expanded="false"><i class="bars"><span></span><span></span><span></span></i><b class="burger-l">Menu</b></button>
   <div class="nav-r">
     <div class="nav-links">
       <a href="#projets"><span class="fr">Projets</span><span class="en">Projects</span></a>
       <a href="#profil"><span class="fr">Profil</span><span class="en">Profile</span></a>
       <a href="#cv">CV</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact"><span class="fr">Me contacter</span><span class="en">Contact me</span></a>
     </div>
     <div class="dd" id="langDd">
       <button class="tbtn dd-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Langue"><span id="langCur">Français</span><span class="dd-caret">▾</span></button>
@@ -422,10 +478,10 @@
   <div class="sec-h">
     <div><h2><span class="fr">Parcours &amp; CV</span><span class="en">Background &amp; CV</span></h2></div>
     <div class="cv-btns">
-      <span class="fr"><a class="btn p" href="cv/Maxime-Gaillard-CV-officiel-FR.pdf" download>CV officiel</a></span>
-      <span class="en"><a class="btn p" href="cv/Maxime-Gaillard-CV-officiel-EN.pdf" download>Official CV</a></span>
-      <span class="fr"><a class="btn g" href="cv/Maxime-Gaillard-CV-IA-FR.pdf" download>CV IA-compatible</a></span>
-      <span class="en"><a class="btn g" href="cv/Maxime-Gaillard-CV-IA-EN.pdf" download>AI-ready CV</a></span>
+      <span class="fr"><a class="btn p" href="cv/Maxime-Gaillard-CV-officiel-FR.pdf" download>Télécharger le CV officiel</a></span>
+      <span class="en"><a class="btn p" href="cv/Maxime-Gaillard-CV-officiel-EN.pdf" download>Download the official CV</a></span>
+      <span class="fr"><a class="btn g" href="cv/Maxime-Gaillard-CV-IA-FR.pdf" download>Télécharger le CV IA</a></span>
+      <span class="en"><a class="btn g" href="cv/Maxime-Gaillard-CV-IA-EN.pdf" download>Download the AI-ready CV</a></span>
     </div>
   </div>
   <div class="cv-grid">
@@ -475,9 +531,9 @@
     <button class="btn p" type="submit"><span class="fr">Envoyer</span><span class="en">Send</span></button>
   </form>
   <div class="cbtns" style="margin-top:1.4rem;">
-    <a class="btn g" href="https://www.linkedin.com/in/maxime-rené-gaillard" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="btn g" id="emailBtn" href="mailto:maximegaillard@yahoo.com">Email</a>
-    <a class="btn g" href="https://dub.sh/maxime-site" target="_blank" rel="noopener">Passionfroot</a>
+    <a class="btn g" href="https://www.linkedin.com/in/maxime-rené-gaillard" target="_blank" rel="noopener"><span class="fr">Écrire sur LinkedIn</span><span class="en">Message on LinkedIn</span></a>
+    <a class="btn g" id="emailBtn" href="mailto:maximegaillard@yahoo.com"><span class="fr">Copier mon email</span><span class="en">Copy my email</span></a>
+    <a class="btn g" href="https://dub.sh/maxime-site" target="_blank" rel="noopener"><span class="fr">Voir mes offres</span><span class="en">See my offers</span></a>
   </div>
 </div></div></section>
 
@@ -492,7 +548,7 @@
 </div></footer>
 
 <div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="ovTitle" tabindex="-1">
-  <div class="ov-top"><div class="in"><span class="k" id="ovKick"></span><button class="close" id="ovClose" aria-label="Fermer">×</button></div></div>
+  <div class="ov-top"><div class="in"><span class="k" id="ovKick"></span><button class="close" id="ovClose"><span class="fr">Fermer</span><span class="en">Close</span></button></div></div>
   <div class="ov-body">
     <h2 class="ov-title" id="ovTitle"></h2>
     <p class="ov-tag" id="ovTag"></p>
@@ -668,7 +724,7 @@
     }).catch(function(){});
 
   var eb=document.getElementById("emailBtn");
-  if(eb)eb.addEventListener("click",function(){try{navigator.clipboard.writeText("maximegaillard@yahoo.com");}catch(e){}var t=eb.textContent;eb.textContent=isEn()?"Copied ✓":"Copié ✓";setTimeout(function(){eb.textContent=t;},1600);});
+  if(eb)eb.addEventListener("click",function(){try{navigator.clipboard.writeText("maximegaillard@yahoo.com");}catch(e){}var t=eb.innerHTML;eb.textContent=isEn()?"Copied ✓":"Copié ✓";setTimeout(function(){eb.innerHTML=t;},1600);});
   var cf=document.getElementById("contactForm");
   if(cf)cf.addEventListener("submit",function(e){e.preventDefault();var body=new URLSearchParams(new FormData(cf)).toString();fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body}).then(function(){cf.innerHTML='<p class="form-ok"><span class="fr">Merci, ton message est parti. Je réponds vite.</span><span class="en">Thanks, your message is on its way. I reply fast.</span></p>';}).catch(function(){cf.innerHTML='<p class="form-ok"><span class="fr">Message envoyé.</span><span class="en">Message sent.</span></p>';});});
 </script>
