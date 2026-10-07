@@ -1,0 +1,10 @@
+# Portfolio maximegaillard.fr sur Cloudflare Pages (fichiers statiques + fonction /api/contact).
+# Déployer avec ./deploy-cloudflare.sh (jamais directement depuis ce dossier : tout ce qui est publié part en ligne).
+# Secret (jamais ici) : RESEND_API_KEY, via `npx wrangler pages secret put RESEND_API_KEY --project-name maximegaillard`.
+name = "maximegaillard"
+pages_build_output_dir = "public"
+compatibility_date = "2026-09-01"
+
+[vars]
+ADMIN_EMAIL = "maximegaillard@yahoo.com"
+MAIL_FROM = "Site maximegaillard.fr <contact@maximegaillard.fr>"

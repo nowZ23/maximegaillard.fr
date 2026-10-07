@@ -4,7 +4,7 @@ Mon site personnel. En ligne sur [maximegaillard.fr](https://maximegaillard.fr).
 
 ## Stack
 
-Pas de framework, pas de build, pas de dépendance runtime. Un seul `index.html` qui contient le markup, le CSS et le JS, servi en statique par Netlify.
+Pas de framework, pas de build, pas de dépendance runtime. Un seul `index.html` qui contient le markup, le CSS et le JS, servi en statique par Cloudflare Pages.
 
 C'est un choix, pas un raccourci : le site tient en un fichier, il n'y a rien à compiler, rien à mettre à jour et il se charge en une requête HTML plus deux fichiers de police.
 
@@ -12,7 +12,7 @@ C'est un choix, pas un raccourci : le site tient en un fichier, il n'y a rien à
 - **Thème** : clair et sombre via `data-theme` sur `<html>`, choix mémorisé en `localStorage`, valeur par défaut prise sur les préférences système.
 - **Langues** : français et anglais dans le même document, bascule par classe CSS sur `<body>`. Pas de fichiers de traduction, pas de routage.
 - **Contenu** : les projets sont un tableau `PROJECTS` en fin de fichier. Ajouter un projet = ajouter un objet.
-- **Formulaire** : Netlify Forms, envoi en `fetch` sans rechargement.
+- **Formulaire** : fonction Cloudflare `functions/api/contact.js`, envoi par email via Resend, en `fetch` sans rechargement.
 
 ## Chiffres à tenir à jour
 
@@ -30,12 +30,12 @@ Puis ouvrir http://localhost:8765. Les chemins de police sont absolus (`/fonts/.
 
 ## Déploiement
 
-Déploiement manuel depuis le dossier, via la CLI Netlify :
+Déploiement manuel sur Cloudflare Pages (projet `maximegaillard`), depuis une copie propre du dossier :
 
 ```bash
-netlify deploy --prod
+./deploy-cloudflare.sh
 ```
 
-Tout le contenu du dossier part en ligne, y compris ce README. Ne rien y laisser qui ne doive pas être public : les sauvegardes et les fichiers de travail vivent dans `~/Developer/maxime-site-backups/`. Les en-têtes de cache sont dans `_headers`.
+Le script publie les fichiers du site sans `functions/`, `wrangler.toml`, ce README ni les fichiers de travail, puis joint la fonction de contact. Ne rien laisser dans le dossier qui ne doive pas être public : les sauvegardes vivent dans `~/Developer/maxime-site-backups/`. Les en-têtes de cache sont dans `_headers`.
 
 Le dossier `cv/` ne contient que les quatre PDF réellement liés depuis le site, deux par langue.

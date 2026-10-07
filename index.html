@@ -520,9 +520,8 @@
 <section class="contact" id="contact"><div class="wrap"><div class="cb">
   <h2><span class="fr">Et si on <span class="ac">construisait</span><br>quelque chose ensemble ?</span><span class="en">What if we built<br>something <span class="ac">together</span>?</span></h2>
   <p class="contact-sub"><span class="fr">Un projet, un stage ou une collaboration de marque ? Le plus simple, c'est LinkedIn. Je collabore avec des marques via des posts sponsorisés auprès de mon audience finance & tech ; le détail de mes offres est sur Passionfroot.</span><span class="en">A project, an internship or a brand collaboration? LinkedIn is easiest. I partner with brands through sponsored posts to my finance & tech audience; my full offers are on Passionfroot.</span></p>
-  <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="cform">
-    <input type="hidden" name="form-name" value="contact">
-    <p hidden><label>Ne pas remplir : <input name="bot-field"></label></p>
+  <form id="contactForm" name="contact" method="POST" action="/api/contact" class="cform">
+    <p hidden><label>Ne pas remplir : <input name="website" tabindex="-1" autocomplete="off"></label></p>
     <div class="cf-row">
       <input name="name" type="text" required data-fr="Nom" data-en="Name" placeholder="Nom" aria-label="Nom">
       <input name="email" type="email" required data-fr="Email" data-en="Email" placeholder="Email" aria-label="Email">
@@ -726,6 +725,6 @@
   var eb=document.getElementById("emailBtn");
   if(eb)eb.addEventListener("click",function(){try{navigator.clipboard.writeText("maximegaillard@yahoo.com");}catch(e){}var t=eb.innerHTML;eb.textContent=isEn()?"Copied ✓":"Copié ✓";setTimeout(function(){eb.innerHTML=t;},1600);});
   var cf=document.getElementById("contactForm");
-  if(cf)cf.addEventListener("submit",function(e){e.preventDefault();var body=new URLSearchParams(new FormData(cf)).toString();fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body}).then(function(){cf.innerHTML='<p class="form-ok"><span class="fr">Merci, ton message est parti. Je réponds vite.</span><span class="en">Thanks, your message is on its way. I reply fast.</span></p>';}).catch(function(){cf.innerHTML='<p class="form-ok"><span class="fr">Message envoyé.</span><span class="en">Message sent.</span></p>';});});
+  if(cf)cf.addEventListener("submit",function(e){e.preventDefault();var btn=cf.querySelector("button[type=submit]");var fd=new FormData(cf);var data={name:fd.get("name")||"",email:fd.get("email")||"",message:fd.get("message")||"",website:fd.get("website")||""};var old=cf.querySelector(".form-err");if(old)old.remove();if(btn)btn.disabled=true;fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}).then(function(r){return r.json().catch(function(){return{ok:false};});}).then(function(res){if(res&&res.ok){cf.innerHTML='<p class="form-ok"><span class="fr">Merci, ton message est parti. Je réponds vite.</span><span class="en">Thanks, your message is on its way. I reply fast.</span></p>';return;}throw new Error(res&&res.error||"send");}).catch(function(err){if(btn)btn.disabled=false;var p=document.createElement("p");p.className="form-ok form-err";var bad=String(err&&err.message)==="invalid_email";p.innerHTML=bad?'<span class="fr">Vérifie ton adresse email.</span><span class="en">Please check your email address.</span>':'<span class="fr">Le message n\'est pas parti. Réessaie, ou écris-moi sur LinkedIn.</span><span class="en">Your message was not sent. Try again, or message me on LinkedIn.</span>';cf.appendChild(p);});});
 </script>
 </body></html>
