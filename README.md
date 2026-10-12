@@ -8,15 +8,15 @@ Pas de framework, pas de build, pas de dépendance runtime. Un seul `index.html`
 
 C'est un choix, pas un raccourci : le site tient en un fichier, il n'y a rien à compiler, rien à mettre à jour et il se charge en une requête HTML plus deux fichiers de police.
 
-- **Polices** : Bricolage Grotesque (titres) et Instrument Sans (texte), licence OFL, auto-hébergées dans `fonts/`. Aucun appel à Google Fonts au runtime, donc rien à déclarer côté RGPD. Sous-ensembles `unicode-range` séparés, seul le latin se charge en français, soit 161 ko à la première visite.
-- **Thème** : clair et sombre via `data-theme` sur `<html>`, choix mémorisé en `localStorage`, valeur par défaut prise sur les préférences système.
+- **Polices** : Instrument Sans (licence OFL) pour tout le texte, monospace du système pour les dates et les métadonnées. Auto-hébergée dans `fonts/`, aucun appel à Google Fonts au runtime, donc rien à déclarer côté RGPD. Seul le sous-ensemble latin se charge en français, soit 30 ko. Bricolage Grotesque reste dans `fonts/` pour les pages `/ndoto/`.
+- **Thème** : clair et sombre via `data-theme` sur `<html>`, posé avant le premier rendu par un petit script en `<head>`. Choix mémorisé en `localStorage`, sinon préférence du système.
 - **Langues** : français et anglais dans le même document, bascule par classe CSS sur `<body>`. Pas de fichiers de traduction, pas de routage.
 - **Contenu** : les projets sont un tableau `PROJECTS` en fin de fichier. Ajouter un projet = ajouter un objet.
 - **Formulaire** : fonction Cloudflare `functions/api/contact.js`, envoi par email via Resend, en `fetch` sans rechargement.
 
 ## Chiffres à tenir à jour
 
-Le compteur d'abonnés LinkedIn est écrit en dur à **5 endroits** dans `index.html` : les deux balises `meta` (description et `og:description`), le chapô du hero en FR, celui en EN et le tableau `PROJECTS` (titre plus bloc « Le résultat »). Chercher `5 000+` en français et `5,000+` en anglais pour les trouver tous.
+Le compteur d'abonnés LinkedIn est écrit en dur dans `index.html` : les balises `meta` (description, `og:description`, `twitter:description`), la liste de repères de l'intro en FR et en EN et le tableau `PROJECTS` (titre plus bloc « Le résultat »). Il figure aussi dans l'image de partage `img/og-v3.jpg`. Chercher `5 000+` en français et `5,000+` en anglais pour les trouver tous.
 
 Le chiffre est arrondi vers le bas, pas daté. Rien ne le met à jour automatiquement : un nombre exact deviendrait faux la semaine suivante, alors qu'un plancher reste vrai tant que l'audience monte. Le relever au palier suivant quand il est franchi.
 
@@ -37,5 +37,7 @@ Déploiement manuel sur Cloudflare Pages (projet `maximegaillard`), depuis une c
 ```
 
 Le script publie les fichiers du site sans `functions/`, `wrangler.toml`, ce README ni les fichiers de travail, puis joint la fonction de contact. Ne rien laisser dans le dossier qui ne doive pas être public : les sauvegardes vivent dans `~/Developer/maxime-site-backups/`. Les en-têtes de cache sont dans `_headers`.
+
+Les images sont servies en cache `immutable` : toute image modifiée change de nom (d'où `og-v3.jpg`).
 
 Le dossier `cv/` ne contient que les quatre PDF réellement liés depuis le site, deux par langue.
