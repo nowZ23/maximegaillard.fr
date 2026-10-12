@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Direction B · La carte</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face{font-family:"Barlow SC";font-weight:400;src:url(fonts/barlow-semi-condensed-latin-400-normal.woff2) format("woff2");font-display:swap;}
+  @font-face{font-family:"Barlow SC";font-weight:600;src:url(fonts/barlow-semi-condensed-latin-600-normal.woff2) format("woff2");font-display:swap;}
+  @font-face{font-family:"Serif It";font-style:italic;src:url(fonts/source-serif-4-latin-400-italic.woff2) format("woff2");font-display:swap;}
+  :root{--paper:#f1eee3;--ink:#23241f;--ink2:#55564e;--grid:#cdc7b4;--road:#c8371d;--g:clamp(14px,3vw,40px);}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--paper);color:var(--ink);font:400 18px/1.45 "Barlow SC",Arial Narrow,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit}
+  .it{font-family:"Serif It",Georgia,serif;font-style:italic;}
+  .caps{text-transform:uppercase;letter-spacing:.16em;font-weight:600;font-size:.74rem;}
+  .sheet{max-width:1400px;margin:0 auto;padding:18px var(--g) 48px;}
+  .marg{display:flex;justify-content:space-between;gap:16px;padding:6px 2px 0;margin-bottom:34px;color:var(--ink2);}
+
+  /* cadre de la feuille avec carroyage */
+  .frame{position:relative;border:1.5px solid var(--ink);outline:1px solid var(--ink);outline-offset:4px;background:var(--paper);}
+  .refs{position:absolute;display:flex;font-size:.72rem;color:var(--ink2);pointer-events:none;}
+  .refs.top{left:0;right:0;top:-24px;}
+  .refs.left{top:0;bottom:0;left:-24px;flex-direction:column;}
+  .refs span{flex:1;display:flex;align-items:center;justify-content:center;}
+  svg.map{display:block;width:100%;height:auto;}
+  .gl{stroke:var(--grid);stroke-width:1;}
+  .road{fill:none;stroke:var(--road);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;}
+  .roadc{fill:none;stroke:var(--paper);stroke-width:2.2;stroke-dasharray:10 10;}
+  .roadb{fill:none;stroke:var(--ink);stroke-width:10;stroke-linecap:round;opacity:.9;}
+  .stn{cursor:pointer;}
+  .stn .halo{fill:var(--road);opacity:0;transition:opacity .15s;}
+  .stn.on .halo{opacity:.16;}
+  .lbl{font-family:"Barlow SC";font-weight:600;font-size:16px;letter-spacing:.07em;text-transform:uppercase;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:5px;stroke-linejoin:round;}
+  .sub{font-family:"Barlow SC";font-size:13px;fill:var(--ink2);paint-order:stroke;stroke:var(--paper);stroke-width:4px;}
+  .town{font-family:"Serif It";font-style:italic;font-size:15px;fill:var(--ink2);paint-order:stroke;stroke:var(--paper);stroke-width:4px;}
+  .stn.on .lbl{fill:var(--road);}
+  .borne text{font-family:"Barlow SC";font-weight:600;font-size:12px;fill:var(--ink);}
+
+  /* cartouche, légende, échelle */
+  .below{margin-top:5px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) minmax(0,1fr);gap:0;border:1.5px solid var(--ink);border-top:0;}
+  .below>div{padding:18px 20px 20px;border-right:1px solid var(--ink);}
+  .below>div:last-child{border-right:0;}
+  .cart{display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:start;}
+  .cart img{width:96px;height:120px;object-fit:cover;object-position:center 15%;border:1px solid var(--ink);filter:grayscale(.35) sepia(.15);}
+  .cart h1{font-weight:600;font-size:clamp(1.7rem,2.6vw,2.4rem);line-height:1;letter-spacing:.06em;text-transform:uppercase;}
+  .cart p{margin-top:8px;font-size:1.02rem;line-height:1.38;}
+  .cart .av{margin-top:10px;font-size:.95rem;color:var(--ink2);}
+  .cart .av a{color:var(--road);font-weight:600;}
+  h2.caps{margin-bottom:12px;}
+  .leg{list-style:none;padding:0;display:grid;gap:8px;font-size:.98rem;}
+  .leg li{display:grid;grid-template-columns:34px 1fr;align-items:center;}
+  .scale{margin-top:18px;}
+  .bar{display:flex;margin-top:6px;height:9px;border:1px solid var(--ink);}
+  .bar i{flex:1;}
+  .bar i:nth-child(odd){background:var(--ink);}
+  .ticks{display:flex;justify-content:space-between;font-size:.78rem;color:var(--ink2);margin-top:3px;}
+  .idx{list-style:none;padding:0;}
+  .idx li button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:baseline;padding:5px 0;}
+  .idx li button:focus-visible{outline:2px solid var(--road);}
+  .idx .nm{font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.95rem;}
+  .idx .dots{border-bottom:1.5px dotted var(--ink2);transform:translateY(-4px);}
+  .idx .rf{font-weight:600;font-size:.95rem;}
+  .idx li.on .nm,.idx li.on .rf{color:var(--road);}
+  .note{margin-top:14px;font-size:.88rem;color:var(--ink2);}
+
+  /* encart projet */
+  .ins{position:fixed;inset:0;z-index:40;background:var(--paper);overflow-y:auto;display:none;}
+  .ins.open{display:block;}
+  .ins-in{max-width:1400px;margin:0 auto;padding:18px var(--g) 64px;}
+  .ins-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1.5px solid var(--ink);padding-bottom:10px;}
+  .ins-top button{all:unset;cursor:pointer;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;border:1.5px solid var(--ink);padding:8px 12px;}
+  .ins-h{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;margin-top:28px;}
+  .ins h2{font-weight:600;font-size:clamp(2.6rem,6vw,5.4rem);line-height:.92;letter-spacing:.03em;text-transform:uppercase;}
+  .ins .tag{margin-top:8px;font-size:1.3rem;}
+  .ins .ref{text-align:right;color:var(--ink2);font-size:.95rem;line-height:1.5;}
+  .ins .ref b{display:block;font-size:2.6rem;line-height:1;color:var(--road);}
+  .ins-fig{margin-top:24px;border:1.5px solid var(--ink);outline:1px solid var(--ink);outline-offset:4px;padding:0;display:flex;gap:10px;overflow-x:auto;background:#e8e4d6;}
+  .ins-fig img{display:block;height:min(58vh,560px);width:auto;flex:none;}
+  .ins-fig.one img{width:100%;height:auto;}
+  .ins-cap{margin-top:12px;font-size:.9rem;}
+  .ins-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:28px;border-top:1.5px solid var(--ink);}
+  .ins-grid>div{padding:14px 20px 0 0;}
+  .ins-grid p{font-size:1.12rem;line-height:1.5;margin-top:6px;}
+  .ins-meta{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px 32px;border-top:1px solid var(--grid);padding-top:12px;}
+  .ins-meta a{color:var(--road);font-weight:600;}
+
+  @media(max-width:760px){
+    .sheet{display:flex;flex-direction:column;}
+    .below{display:contents;}
+    .below>div{border:1.5px solid var(--ink);border-top:0;}
+    .below>.cart{order:-1;border-top:1.5px solid var(--ink);margin-bottom:34px;}
+    .marg{order:-2;margin-bottom:12px;}
+    .refs.left{left:-18px}
+    .frame{margin-left:14px}
+    .marg span:last-child{display:none}
+    .ins-grid{grid-template-columns:1fr;}
+    .ins-h{grid-template-columns:1fr;}
+    .ins .ref{text-align:left;}
+  }
+</style></head>
+<body>
+<div class="sheet">
+  <div class="marg caps"><span>Feuille 1 · Relevé des projets, 2022 à 2026</span><span>Projection chronologique · maximegaillard.fr</span></div>
+  <div class="frame" id="frame">
+    <div class="refs top" id="refTop"></div>
+    <div class="refs left" id="refLeft"></div>
+    <svg class="map" id="map" role="img" aria-label="Carte du parcours de Maxime Gaillard, de 2022 à 2026"></svg>
+  </div>
+  <div class="below">
+    <div class="cart">
+      <img id="ph" alt="Portrait de Maxime Gaillard">
+      <div><h1>Maxime Gaillard</h1><p id="lede"></p><p class="av"><span id="avail"></span> <a href="#">Me contacter</a></p></div>
+    </div>
+    <div>
+      <h2 class="caps">Légende</h2>
+      <ul class="leg">
+        <li><svg width="26" height="18"><circle cx="13" cy="9" r="7" fill="#23241f"/><circle cx="13" cy="9" r="3" fill="#f1eee3"/></svg>Projet en ligne</li>
+        <li><svg width="26" height="18"><circle cx="13" cy="9" r="7" fill="#f1eee3" stroke="#23241f" stroke-width="2.5"/></svg>Projet livré ou en lancement</li>
+        <li><svg width="26" height="18"><rect x="7" y="3" width="12" height="12" transform="rotate(45 13 9)" fill="#23241f"/></svg>Jalon</li>
+        <li><svg width="26" height="18"><circle cx="13" cy="9" r="3.5" fill="#55564e"/></svg><span class="it">Lieu de passage (expérience)</span></li>
+        <li><svg width="26" height="22"><path d="M8 20V8a5 5 0 0 1 10 0v12z" fill="#fff" stroke="#23241f" stroke-width="1.2"/><path d="M8 9a5 5 0 0 1 10 0z" fill="#c8371d"/></svg>Borne : année</li>
+      </ul>
+      <div class="scale"><span class="caps">Échelle : 1 borne pour 1 an</span><div class="bar"><i></i><i></i><i></i><i></i></div><div class="ticks"><span>0</span><span>6 mois</span><span>1 an</span><span>18 mois</span><span>2 ans</span></div></div>
+    </div>
+    <div>
+      <h2 class="caps">Index des projets</h2>
+      <ol class="idx" id="idx"></ol>
+      <p class="note it">Les lettres et chiffres renvoient au carroyage de la feuille. Chaque nom ouvre l'encart du projet.</p>
+    </div>
+  </div>
+</div>
+
+<div class="ins" id="ins" role="dialog" aria-modal="true">
+  <div class="ins-in">
+    <div class="ins-top"><span class="caps" id="iKick"></span><button id="iClose">Retour à la carte</button></div>
+    <div class="ins-h"><div><h2 id="iTitle"></h2><p class="tag it" id="iTag"></p></div><div class="ref"><b id="iRef"></b><span id="iPlace"></span></div></div>
+    <div class="ins-fig" id="iFig"></div>
+    <p class="ins-cap it" id="iCap"></p>
+    <div class="ins-grid" id="iGrid"></div>
+    <div class="ins-meta" id="iMeta"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+  document.getElementById("lede").textContent=SITE.lede;
+  document.getElementById("avail").textContent=SITE.avail;
+  document.getElementById("ph").src=SITE.photo;
+  var P={};PROJECTS.forEach(function(p){P[p.id]=p;});
+  /* le parcours dans l'ordre chronologique : projets (gras) et lieux de passage (italique) */
+  /* le parcours dans l'ordre chronologique. lp : bandeau d'étiquette en haut (a) ou en bas (b) */
+  var ROUTE=[
+    {y:2022,t:.03,town:"New York",c:"40,71° N · 74,01° O",lp:"b",an:"start"},
+    {y:2023,t:.15,town:"Belfort",c:"47,64° N · 6,86° E",lp:"a"},
+    {y:2023,t:.22,town:"Stellantis",lp:"b"},
+    {y:2023,t:.29,town:"Palaiseau",c:"48,71° N · 2,25° E",lp:"a"},
+    {y:2025,t:.39,p:"web",lp:"b"},
+    {y:2025,t:.47,p:"linkedin",lp:"a"},
+    {y:2025,t:.545,town:"Lille, IESEG",c:"50,63° N · 3,06° E",lp:"b"},
+    {y:2026,t:.62,town:"BPCE",lp:"a"},
+    {y:2026,t:.69,p:"bloomberg",lp:"b"},
+    {y:2026,t:.765,p:"geosnap",lp:"a"},
+    {y:2026,t:.865,p:"cg",lp:"a"},
+    {y:2026,t:.955,p:"roadtrip",lp:"b",an:"end"}
+  ];
+  var BORNES={2022:.0,2023:.09,2025:.345,2026:.585};
+  var COLS="ABCDEFGH",svg=document.getElementById("map"),NS="http://www.w3.org/2000/svg";
+  function el(n,a,parent){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(parent||svg).appendChild(e);return e;}
+  function draw(){
+    var mob=innerWidth<760,W=mob?360:1200,H=mob?1240:580,nc=mob?4:8,nr=mob?8:4;
+    svg.setAttribute("viewBox","0 0 "+W+" "+H);svg.innerHTML="";
+    var cw=W/nc,rh=H/nr;
+    for(var i=1;i<nc;i++)el("line",{x1:i*cw,y1:0,x2:i*cw,y2:H,class:"gl"});
+    for(var j=1;j<nr;j++)el("line",{x1:0,y1:j*rh,x2:W,y2:j*rh,class:"gl"});
+    document.getElementById("refTop").innerHTML=COLS.slice(0,nc).split("").map(function(c){return "<span>"+c+"</span>";}).join("");
+    document.getElementById("refLeft").innerHTML=Array.from({length:nr},function(_,k){return "<span>"+(k+1)+"</span>";}).join("");
+    /* la route : une fonction du temps t (0 = 2022, 1 = aujourd'hui) */
+    function at(t){
+      if(!mob)return [60+t*(W-120),H*0.5+Math.sin(t*Math.PI*2.4+0.5)*H*0.24+Math.sin(t*Math.PI*8)*9];
+      return [78+Math.sin(t*Math.PI*2.4+0.5)*34+Math.sin(t*Math.PI*8)*4,50+t*(H-100)];
+    }
+    var pts=[];for(var k=0;k<=300;k++)pts.push(at(k/300));
+    var d="M"+pts.map(function(q){return q[0].toFixed(1)+" "+q[1].toFixed(1);}).join("L");
+    var leaders=el("g",{});
+    el("path",{d:d,class:"roadb"});el("path",{d:d,class:"road"});el("path",{d:d,class:"roadc"});
+    /* bornes kilométriques : une par année, plantées au bord de la route */
+    Object.keys(BORNES).forEach(function(y){
+      var q=at(BORNES[y]),g=el("g",{class:"borne",transform:mob?"translate("+Math.max(6,q[0]-58)+","+(q[1]-24)+")":"translate("+(q[0]-13+(y==="2022"?36:0))+","+(q[1]+(y==="2022"?-74:14))+")"});
+      el("path",{d:"M0 48V14a13 13 0 0 1 26 0v34z",fill:"#fff",stroke:"#23241f","stroke-width":"1.3"},g);
+      el("path",{d:"M0 15a13 13 0 0 1 26 0z",fill:"#c8371d"},g);
+      var tx=el("text",{x:13,y:35,"text-anchor":"middle","font-size":"11"},g);tx.textContent=y;
+    });
+    ROUTE.forEach(function(s){
+      var q=at(s.t);s.x=q[0];s.yy=q[1];
+      var g=el("g",{class:"stn"}),top=s.lp==="a",lx,ly,anchor;
+      if(mob){lx=170;ly=s.yy;anchor="start";el("path",{d:"M"+(s.x+12)+" "+s.yy+"H"+(lx-8),stroke:"#23241f","stroke-width":"0.8",fill:"none"},leaders);}
+      else{anchor=s.an||"middle";lx=s.x+(anchor==="start"?-10:anchor==="end"?10:0);ly=top?44:H-56;
+        el("path",{d:"M"+s.x+" "+(top?ly+30:ly-24)+"V"+s.yy,stroke:"#23241f","stroke-width":"0.8",fill:"none"},leaders);}
+      var line1=mob?ly-2:ly,line2=mob?ly+15:ly+17;
+      if(s.p){
+        var p=P[s.p];s.ref=COLS[Math.min(nc-1,Math.floor(s.x/cw))]+(Math.min(nr-1,Math.floor(s.yy/rh))+1);p.ref=s.ref;p.coord=s.c||"";
+        el("circle",{cx:s.x,cy:s.yy,r:26,class:"halo"},g);
+        if(p.kind==="Jalon")el("rect",{x:s.x-8,y:s.yy-8,width:16,height:16,transform:"rotate(45 "+s.x+" "+s.yy+")",fill:"#23241f",stroke:"#f1eee3","stroke-width":2},g);
+        else if(p.stype==="live"){el("circle",{cx:s.x,cy:s.yy,r:11,fill:"#23241f",stroke:"#f1eee3","stroke-width":2},g);el("circle",{cx:s.x,cy:s.yy,r:4.5,fill:"#f1eee3"},g);}
+        else el("circle",{cx:s.x,cy:s.yy,r:10,fill:"#f1eee3",stroke:"#23241f","stroke-width":3.5},g);
+        var t1=el("text",{x:lx,y:line1,"text-anchor":anchor,class:"lbl"},g);t1.textContent=p.id==="linkedin"?"5 000+ abonnés":p.title;
+        var u=el("text",{x:lx,y:line2,"text-anchor":anchor,class:"sub"},g);u.textContent=s.ref+" · "+p.status;
+        g.setAttribute("tabindex","0");g.setAttribute("role","button");g.setAttribute("aria-label",p.title);
+        g.addEventListener("click",function(){openI(p);});
+        g.addEventListener("keydown",function(e){if(e.key==="Enter")openI(p);});
+        g.addEventListener("mouseenter",function(){hi(p.id,true);});g.addEventListener("mouseleave",function(){hi(p.id,false);});
+        g.dataset.p=p.id;
+      }else{
+        el("circle",{cx:s.x,cy:s.yy,r:5,fill:"#55564e",stroke:"#f1eee3","stroke-width":2},g);
+        var tt=el("text",{x:lx,y:line1,"text-anchor":anchor,class:"town"},g);tt.textContent=s.town;
+        if(s.c){var tc=el("text",{x:lx,y:line2,"text-anchor":anchor,class:"sub"},g);tc.textContent=s.c;}
+      }
+    });
+    renderIdx();
+  }
+  function renderIdx(){
+    var ol=document.getElementById("idx");
+    ol.innerHTML=PROJECTS.map(function(p){return '<li data-p="'+p.id+'"><button type="button"><span class="nm">'+esc(p.title)+'</span><span class="dots"></span><span class="rf">'+(p.ref||"")+'</span></button></li>';}).join("");
+    ol.querySelectorAll("li").forEach(function(li){var p=P[li.dataset.p];var b=li.firstChild;
+      b.addEventListener("click",function(){openI(p);});
+      b.addEventListener("mouseenter",function(){hi(p.id,true);});b.addEventListener("mouseleave",function(){hi(p.id,false);});
+      b.addEventListener("focus",function(){hi(p.id,true);});b.addEventListener("blur",function(){hi(p.id,false);});});
+  }
+  function hi(id,on){document.querySelectorAll('[data-p="'+id+'"]').forEach(function(n){n.classList.toggle("on",on);});}
+  function openI(p){
+    document.getElementById("iKick").textContent="Encart · "+p.kind+" · "+p.date;
+    document.getElementById("iTitle").textContent=p.title;
+    document.getElementById("iTag").textContent=p.tag;
+    document.getElementById("iRef").textContent=p.ref||"";
+    document.getElementById("iPlace").textContent=(p.coord?p.coord+" · ":"")+"carré de la feuille 1";
+    var f=document.getElementById("iFig");f.className="ins-fig"+(p.imgs.length===1?" one":"");f.style.display=p.imgs.length?"":"none";
+    f.innerHTML=p.imgs.map(function(s){return '<img src="'+s+'" alt="'+esc(p.title)+'">';}).join("");
+    document.getElementById("iCap").textContent=p.cap||"";
+    document.getElementById("iGrid").innerHTML=p.blocks.map(function(b){return '<div><span class="caps">'+esc(b[0])+'</span><p>'+esc(b[1])+'</p></div>';}).join("");
+    document.getElementById("iMeta").innerHTML='<span><span class="caps">Statut</span> '+esc(p.status)+'</span>'+(p.stack.length?'<span><span class="caps">Outils</span> '+esc(p.stack.join(", "))+'</span>':'')+(p.link?'<a href="'+p.href+'">'+esc(p.link)+'</a>':'');
+    document.getElementById("ins").classList.add("open");document.body.style.overflow="hidden";
+  }
+  document.getElementById("iClose").addEventListener("click",function(){document.getElementById("ins").classList.remove("open");document.body.style.overflow="";});
+  draw();
+  var mq=matchMedia("(max-width:759px)");mq.addEventListener("change",draw);
+  var w=wantedProject();if(w&&P[w])openI(P[w]);
+</script>
+</body></html>

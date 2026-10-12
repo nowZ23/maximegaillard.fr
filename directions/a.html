@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Direction A · Le cahier</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face{font-family:"Caslon D";src:url(fonts/libre-caslon-display-latin-400-normal.woff2) format("woff2");font-display:swap;}
+  @font-face{font-family:"Franklin";font-weight:400;src:url(fonts/libre-franklin-latin-400-normal.woff2) format("woff2");font-display:swap;}
+  @font-face{font-family:"Franklin";font-weight:600;src:url(fonts/libre-franklin-latin-600-normal.woff2) format("woff2");font-display:swap;}
+  @font-face{font-family:"Franklin";font-style:italic;font-weight:400;src:url(fonts/libre-franklin-latin-400-italic.woff2) format("woff2");font-display:swap;}
+  :root{--paper:#f6f3ec;--ink:#1b1a17;--ink2:#4a4741;--rule:#1b1a17;--hair:#cfc9bc;--red:#c3261c;--g:clamp(16px,3vw,48px);}
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--paper);color:var(--ink);font:400 17px/1.55 "Franklin",Georgia,serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit}
+  .pg{max-width:1360px;margin:0 auto;padding:0 var(--g);}
+  .disp{font-family:"Caslon D",Georgia,serif;font-weight:400;}
+  .sc{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;}
+
+  /* titre courant et filets */
+  .run{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;padding:18px 0 8px;border-bottom:3px double var(--rule);}
+  .run span:nth-child(2){text-align:center}
+  .run span:last-child{text-align:right}
+  .run a{text-decoration:none}
+
+  /* une */
+  .une{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:clamp(18px,3vw,36px) 0 0;}
+  .une h1{grid-column:1/10;grid-row:1;align-self:end;font-family:"Caslon D",Georgia,serif;font-weight:400;font-size:clamp(4.2rem,15.4vw,15rem);line-height:.8;letter-spacing:-.035em;margin-left:-.04em;}
+  .une h1 em{font-style:normal;color:var(--red);}
+  .deck{grid-column:1/8;margin-top:clamp(20px,3vw,40px);padding-top:14px;border-top:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;}
+  .deck .no{font-family:"Caslon D";font-size:4.4rem;line-height:.75;color:var(--red);}
+  .deck p{font-size:clamp(1.15rem,1.7vw,1.45rem);line-height:1.38;font-family:"Caslon D";letter-spacing:-.005em;}
+  .avail{grid-column:1/8;margin-top:16px;font-style:italic;color:var(--ink2);}
+  .avail a{font-style:normal;font-weight:600;color:var(--red);text-decoration-thickness:1px;text-underline-offset:3px;}
+  figure.au{grid-column:10/13;grid-row:1/4;margin:0;}
+  figure.au img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;filter:grayscale(1) contrast(1.06);}
+  figure.au figcaption{margin-top:8px;font-size:.8rem;color:var(--ink2);display:flex;justify-content:space-between;gap:12px;}
+  figure.au figcaption b{font-weight:600;color:var(--ink)}
+
+  /* sommaire */
+  .som{margin-top:clamp(48px,7vw,96px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;border-top:3px double var(--rule);padding-top:14px;}
+  .som-h{grid-column:1/4;}
+  .som-h h2{font-family:"Caslon D";font-weight:400;font-size:clamp(2.4rem,4vw,3.6rem);line-height:.9;}
+  .som-h p{margin-top:12px;font-style:italic;color:var(--ink2);font-size:.95rem;max-width:22ch;}
+  .toc{grid-column:4/13;list-style:none;padding:0;}
+  .toc li{border-bottom:1px solid var(--hair);}
+  .toc button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:3.2rem minmax(0,auto) 1fr auto;align-items:baseline;column-gap:14px;padding:16px 0 14px;}
+  .toc button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+  .toc .n{font-family:"Caslon D";font-size:1.6rem;color:var(--red);}
+  .toc .t{font-family:"Caslon D";font-size:clamp(1.9rem,3.3vw,3rem);line-height:1;letter-spacing:-.01em;}
+  .toc .t small{display:block;font-family:"Franklin";font-style:italic;font-size:.95rem;letter-spacing:0;color:var(--ink2);margin-top:6px;}
+  /* points de conduite, comme dans un vrai sommaire */
+  .toc .ld{align-self:end;margin-bottom:.55em;height:1px;background-image:radial-gradient(circle,var(--ink) 1px,transparent 1.3px);background-size:9px 3px;background-repeat:repeat-x;background-position:0 50%;min-width:24px;height:3px;}
+  .toc .p{font-family:"Caslon D";font-size:1.5rem;white-space:nowrap;}
+  .toc .p i{font-family:"Franklin";font-style:normal;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-right:6px;color:var(--ink2);}
+  .toc .st{grid-column:2/-1;margin-top:6px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink2);}
+  .toc .st.live{color:var(--red);}
+  .toc button:hover .t{color:var(--red);}
+
+  /* profil en colonnes de journal */
+  .prof{margin-top:clamp(48px,7vw,96px);border-top:3px double var(--rule);padding-top:14px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;}
+  .prof h2{grid-column:1/4;font-family:"Caslon D";font-weight:400;font-size:clamp(2.4rem,4vw,3.6rem);line-height:.9;}
+  .prof .txt{grid-column:4/13;columns:2 300px;column-gap:40px;column-rule:1px solid var(--hair);}
+  .prof .txt p{margin-bottom:12px;hyphens:auto;}
+  .prof .txt p:nth-child(2)::first-letter{font-family:"Caslon D";float:left;font-size:4.6rem;line-height:.78;padding:6px 8px 0 0;color:var(--red);}
+  .pull{column-span:all;font-family:"Caslon D";font-size:clamp(1.6rem,2.6vw,2.3rem);line-height:1.1;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 0;margin:4px 0 16px;}
+  .folio{display:flex;justify-content:space-between;border-top:1px solid var(--rule);margin-top:clamp(48px,7vw,96px);padding:10px 0 40px;font-size:.8rem;color:var(--ink2);}
+
+  /* article ouvert */
+  .art{position:fixed;inset:0;background:var(--paper);overflow-y:auto;z-index:50;display:none;}
+  .art.open{display:block}
+  .art .run b{font-weight:600}
+  .art .close{all:unset;cursor:pointer;font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--ink);}
+  .kick{margin-top:clamp(24px,4vw,48px);color:var(--red);}
+  .art h2{font-family:"Caslon D";font-weight:400;font-size:clamp(3.4rem,10vw,9.5rem);line-height:.85;letter-spacing:-.03em;margin-top:8px;}
+  .stand{margin-top:16px;font-style:italic;font-size:clamp(1.15rem,1.8vw,1.5rem);max-width:40ch;color:var(--ink2);}
+  .figs{display:flex;gap:18px;margin-top:clamp(24px,4vw,44px);overflow-x:auto;padding-bottom:6px;}
+  .figs figure{flex:none;margin:0}
+  .figs img{display:block;height:min(56vh,520px);width:auto;border:1px solid var(--ink);}
+  .figs.one img{height:auto;width:min(100%,1100px);}
+  .figs figcaption{margin-top:6px;font-size:.8rem;color:var(--ink2);max-width:60ch;}
+  .figs figcaption b{color:var(--red);font-weight:600;margin-right:4px}
+  .body{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;margin-top:clamp(24px,4vw,44px);border-top:1px solid var(--rule);padding-top:16px;padding-bottom:80px;}
+  .body .cols{grid-column:1/9;columns:2 280px;column-gap:36px;column-rule:1px solid var(--hair);}
+  .body .cols h3{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:4px;break-after:avoid;}
+  .body .cols p{margin-bottom:16px;font-size:1.06rem;}
+  .body .cols div:first-child p::first-letter{font-family:"Caslon D";float:left;font-size:4rem;line-height:.78;padding:6px 8px 0 0;color:var(--red);}
+  .box{grid-column:10/13;border-top:3px double var(--rule);padding-top:10px;font-size:.92rem;}
+  .box dt{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink2);margin-top:12px;}
+  .box dd{margin:2px 0 0;}
+  .box a{color:var(--red);font-weight:600;}
+
+  @media(max-width:820px){
+    .une h1{font-size:clamp(3.6rem,20vw,7rem);grid-column:1/-1;}
+    .deck,.avail{grid-column:1/-1;}
+    figure.au{grid-column:1/-1;grid-row:auto;margin-top:20px;display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:end;}
+    figure.au figcaption{display:block;}
+    .som-h,.toc,.prof h2,.prof .txt{grid-column:1/-1;}
+    .som-h{margin-bottom:12px}
+    .toc button{grid-template-columns:2.2rem minmax(0,1fr) auto;}
+    .toc .ld{display:none}
+    .toc .st{grid-column:2/-1}
+    .run{grid-template-columns:1fr auto;}
+    .run span:nth-child(2){display:none}
+    .body .cols,.box{grid-column:1/-1;}
+    .box{margin-top:16px}
+    .deck .no{font-size:3.2rem}
+  }
+</style></head>
+<body>
+<div class="pg">
+  <header class="run sc"><a href="#">Maxime Gaillard</a><span>Cahier de projets · n° 1</span><span>maximegaillard.fr</span></header>
+
+  <section class="une">
+    <h1>Maxime<br>Gaillard<em>.</em></h1>
+    <div class="deck"><span class="no">§</span><p id="lede"></p></div>
+    <p class="avail"><span id="avail"></span> <a href="#">Me contacter</a></p>
+    <figure class="au"><img id="ph" alt="Portrait de Maxime Gaillard"><figcaption><span><b>Fig. 1.</b> L'auteur. </span><span>IESEG, Lille</span></figcaption></figure>
+  </section>
+
+  <section class="som">
+    <div class="som-h"><h2>Sommaire</h2><p>Six projets, du plus récent au plus ancien. Chaque titre ouvre son article.</p></div>
+    <ol class="toc" id="toc"></ol>
+  </section>
+
+  <section class="prof">
+    <h2>Profil</h2>
+    <div class="txt">
+      <p class="pull">«&nbsp;Je vends et je code ce que je vends.&nbsp;»</p>
+      <p>Je m'appelle Maxime. J'étudie la finance de marché à l'IESEG, mais je passe surtout mes journées à construire : des apps, des automatisations et des outils qui règlent de vrais problèmes.</p>
+      <p>Je suis développeur et conseiller à la fois. Je pense le produit, je le vends, puis je le livre moi-même, sans intermédiaire. J'aime autant convaincre un client que résoudre un bug à 2&nbsp;h du matin.</p>
+      <p>Ce que je cherche : des projets où je peux vendre et construire, apprendre vite et voir un impact réel. Un projet livré vaut mieux que dix commencés.</p>
+    </div>
+  </section>
+  <footer class="folio"><span>p. 1</span><span>Maxime Gaillard · Cahier de projets</span><span>Suite : Parcours, p. 9</span></footer>
+</div>
+
+<div class="art" id="art" role="dialog" aria-modal="true">
+  <div class="pg">
+    <header class="run sc"><span><b id="aPage"></b></span><span>Cahier de projets · n° 1</span><span><button class="close" id="aClose">Fermer</button></span></header>
+    <p class="kick sc" id="aKick"></p>
+    <h2 id="aTitle"></h2>
+    <p class="stand" id="aTag"></p>
+    <div class="figs" id="aFigs"></div>
+    <div class="body"><div class="cols" id="aCols"></div><dl class="box" id="aBox"></dl></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+  document.getElementById("lede").textContent=SITE.lede;
+  document.getElementById("avail").textContent=SITE.avail;
+  document.getElementById("ph").src=SITE.photo;
+  var toc=document.getElementById("toc");
+  PROJECTS.forEach(function(p,i){
+    var page=2+i;p.page=page;
+    var li=document.createElement("li");
+    li.innerHTML='<button type="button"><span class="n">'+(i+1)+'</span><span class="t">'+esc(p.title)+'<small>'+esc(p.tag)+'</small></span><span class="ld" aria-hidden="true"></span><span class="p"><i>p.</i>'+page+'</span><span class="st '+p.stype+'">'+esc(p.status)+' · '+p.date+'</span></button>';
+    li.firstChild.addEventListener("click",function(){openA(p,i);});
+    toc.appendChild(li);
+  });
+  function openA(p,i){
+    document.getElementById("aPage").textContent="p. "+p.page;
+    document.getElementById("aKick").textContent=p.kind+" n° "+(i+1)+" · "+p.date;
+    document.getElementById("aTitle").textContent=p.title;
+    document.getElementById("aTag").textContent=p.tag;
+    var f=document.getElementById("aFigs");f.className="figs"+(p.imgs.length===1?" one":"");
+    f.innerHTML=p.imgs.map(function(s,k){return '<figure><img src="'+s+'" alt="'+esc(p.title)+'"><figcaption><b>Fig. '+(k+2)+'.</b>'+(k===0&&p.cap?esc(p.cap):esc(p.title)+", capture "+(k+1)+".")+'</figcaption></figure>';}).join("");
+    f.style.display=p.imgs.length?"":"none";
+    document.getElementById("aCols").innerHTML=p.blocks.map(function(b){return '<div><h3>'+esc(b[0])+'</h3><p>'+esc(b[1])+'</p></div>';}).join("");
+    document.getElementById("aBox").innerHTML='<dt>Statut</dt><dd>'+esc(p.status)+'</dd>'+(p.stack.length?'<dt>Outils</dt><dd>'+esc(p.stack.join(", "))+'</dd>':'')+(p.link?'<dt>Lien</dt><dd><a href="'+p.href+'">'+esc(p.link)+'</a></dd>':'');
+    document.getElementById("art").classList.add("open");document.body.style.overflow="hidden";
+  }
+  document.getElementById("aClose").addEventListener("click",function(){document.getElementById("art").classList.remove("open");document.body.style.overflow="";});
+  var w=wantedProject();if(w)PROJECTS.forEach(function(p,i){if(p.id===w)openA(p,i);});
+</script>
+</body></html>

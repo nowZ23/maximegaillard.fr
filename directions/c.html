@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Direction C · Le rapport</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face{font-family:"Plex C";font-weight:400;src:url(fonts/ibm-plex-sans-condensed-latin-400-normal.woff2) format("woff2");font-display:swap;}
+  @font-face{font-family:"Plex C";font-weight:600;src:url(fonts/ibm-plex-sans-condensed-latin-600-normal.woff2) format("woff2");font-display:swap;}
+  @font-face{font-family:"Plex M";font-weight:400;src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-display:swap;}
+  @font-face{font-family:"Plex M";font-weight:500;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2");font-display:swap;}
+  :root{--paper:#fbfbf8;--ink:#161616;--ink2:#56564f;--rule:#161616;--hair:#d9d8d1;--head:#efeee8;--stamp:#b3261e;--g:clamp(14px,3vw,44px);}
+  *{box-sizing:border-box;margin:0}
+  body{background:#e7e6e0;color:var(--ink);font:400 17px/1.5 "Plex C",Arial Narrow,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit}
+  .m{font-family:"Plex M",ui-monospace,monospace;font-size:.8rem;letter-spacing:.01em;}
+  .doc{max-width:1280px;margin:0 auto;background:var(--paper);padding:0 var(--g) 40px;min-height:100vh;box-shadow:0 0 0 1px #d2d1ca;}
+  /* cartouche de document */
+  .hd{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-bottom:2px solid var(--rule);}
+  .hd>div{padding:14px 12px 10px 0;}
+  .hd>div+div{border-left:1px solid var(--hair);padding-left:12px;}
+  .hd b{display:block;font-weight:600;font-size:1rem;}
+  .hd span{color:var(--ink2);}
+  h2.sec{display:grid;grid-template-columns:4.5rem 1fr;font-weight:600;font-size:1rem;letter-spacing:.02em;text-transform:uppercase;border-bottom:1px solid var(--rule);padding:30px 0 8px;margin-bottom:0;}
+  h2.sec .m{font-size:.9rem;color:var(--stamp);text-transform:none;}
+
+  .id{display:grid;grid-template-columns:4.5rem minmax(0,1fr) 220px;column-gap:0;padding-top:24px;}
+  .id .lab{grid-column:1;}
+  .id h1{grid-column:2;font-weight:600;font-size:clamp(3rem,7.4vw,6.6rem);line-height:.9;letter-spacing:-.02em;}
+  .id .lede{grid-column:2;margin-top:18px;font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.38;max-width:44ch;}
+  .id .av{grid-column:2;margin-top:14px;display:flex;gap:10px 16px;flex-wrap:wrap;align-items:baseline;}
+  .id .av a{font-weight:600;}
+  .id figure{grid-column:3;grid-row:1/4;margin:0;justify-self:end;width:180px;}
+  .id figure img{display:block;width:180px;height:225px;object-fit:cover;object-position:center 15%;border:1px solid var(--rule);}
+  .id figcaption{margin-top:6px;color:var(--ink2);}
+
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;}
+  th{font-family:"Plex M";font-weight:400;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);text-align:left;background:var(--head);padding:8px 10px;border-bottom:1px solid var(--rule);}
+  td{padding:11px 10px;border-bottom:1px solid var(--hair);vertical-align:baseline;}
+  td.n,th.n{text-align:right;}
+  .kpi td.v{font-family:"Plex M";font-weight:500;font-size:1.5rem;text-align:right;white-space:nowrap;}
+  .kpi td.nt{font-family:"Plex M";font-size:.8rem;color:var(--ink2);text-align:right;white-space:nowrap;}
+  sup{font-family:"Plex M";font-size:.62rem;color:var(--stamp);margin-left:2px;}
+  .tblwrap{padding-left:4.5rem;}
+  .pf tr{cursor:pointer;}
+  .pf tbody tr:hover td{background:#f3f2ec;}
+  .pf td.ref{font-family:"Plex M";font-size:.8rem;white-space:nowrap;}
+  .pf td.pj{font-weight:600;font-size:1.12rem;}
+  .pf td.pj small{display:block;font-weight:400;font-size:.9rem;color:var(--ink2);}
+  .pf td.tl{font-family:"Plex M";font-size:.75rem;color:var(--ink2);}
+  .st{display:inline-block;font-family:"Plex M";font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;border:1.5px solid currentColor;padding:2px 6px;white-space:nowrap;}
+  .st.live{color:var(--stamp);}
+  .pf td.go{font-family:"Plex M";font-size:.8rem;white-space:nowrap;text-decoration:underline;text-underline-offset:3px;}
+  .mot{display:grid;grid-template-columns:4.5rem minmax(0,1fr) minmax(0,1fr);column-gap:32px;padding-top:18px;}
+  .mot p{grid-column:auto;margin-bottom:12px;}
+  .mot .q{grid-column:2/4;font-weight:600;font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.15;margin-bottom:16px;}
+  .mot .sig{grid-column:2/4;color:var(--ink2);}
+  .ft{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:2px solid var(--rule);margin-top:40px;padding-top:10px;color:var(--ink2);}
+
+  /* tampon encré, dessiné en SVG */
+  .stamp{display:block;transform:rotate(-6deg);}
+  .stamp text{font-family:"Plex M";font-weight:500;letter-spacing:.12em;fill:var(--stamp);}
+
+  /* note annexe (fiche projet) */
+  .an{position:fixed;inset:0;z-index:50;background:#e7e6e0;overflow-y:auto;display:none;}
+  .an.open{display:block;}
+  .an .doc{min-height:100%;}
+  .an-top{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--rule);padding:14px 0 10px;}
+  .an-top button{all:unset;cursor:pointer;font-family:"Plex M";font-size:.8rem;border:1.5px solid var(--ink);padding:6px 10px;}
+  .an-h{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:start;padding-top:22px;}
+  .an h3{font-weight:600;font-size:clamp(2.4rem,6vw,5rem);line-height:.92;letter-spacing:-.015em;}
+  .an .tag{margin-top:10px;font-size:1.25rem;color:var(--ink2);}
+  .an-spec{margin-top:24px;}
+  .an-spec td:first-child{width:180px;font-family:"Plex M";font-size:.78rem;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em;}
+  .an-figs{margin-top:28px;display:flex;gap:14px;overflow-x:auto;padding-bottom:6px;}
+  .an-figs figure{flex:none;margin:0;}
+  .an-figs img{display:block;height:min(54vh,500px);width:auto;border:1px solid var(--rule);}
+  .an-figs.one figure{flex:1;}.an-figs.one img{width:100%;height:auto;}
+  .an-figs figcaption{margin-top:6px;color:var(--ink2);}
+  .an-paras{margin-top:28px;border-top:1px solid var(--rule);}
+  .an-paras div{display:grid;grid-template-columns:4.5rem 12rem minmax(0,1fr);gap:0;padding:14px 0;border-bottom:1px solid var(--hair);}
+  .an-paras b{font-weight:600;}
+  .an-paras p{font-size:1.08rem;max-width:68ch;}
+
+  @media(max-width:820px){
+    .hd{grid-template-columns:1fr 1fr;}
+    .hd>div:nth-child(3){border-left:0;padding-left:0;}
+    .hd>div:nth-child(n+3){border-top:1px solid var(--hair);}
+    .id{grid-template-columns:1fr;}
+    .id .lab{display:none;}
+    .id h1,.id .lede,.id .av{grid-column:1;}
+    .id figure{grid-column:1;grid-row:1;justify-self:start;width:110px;margin-bottom:16px;}
+    .id figure img{width:110px;height:138px;}
+    h2.sec{grid-template-columns:3rem 1fr;}
+    .tblwrap{padding-left:0;}
+    .pf thead,.pf td.tl,.pf td.yr,.pf td.nat{display:none;}
+    .pf tr{display:grid;grid-template-columns:auto 1fr;column-gap:12px;border-bottom:1px solid var(--hair);padding:8px 0;}
+    .pf td{border:0;padding:3px 0;}
+    .pf td.pj{grid-column:2;grid-row:1/3;}
+    .pf td.ref{grid-row:1;}
+    .pf td.sts{grid-column:2;}
+    .pf td.go{grid-column:2;}
+    .mot{grid-template-columns:1fr;}
+    .mot .q,.mot .sig{grid-column:1;}
+    .an-h{grid-template-columns:1fr;}
+    .an-paras div{grid-template-columns:3rem 1fr;}
+    .an-paras p{grid-column:1/-1;margin-top:4px;}
+    .an-spec td:first-child{width:110px;}
+  }
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- encre irrégulière du tampon : bords grignotés et manques, comme un vrai tampon en caoutchouc -->
+  <filter id="ink" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="7" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.5 1.42" result="holes"/>
+    <feComposite in="SourceGraphic" in2="holes" operator="in" result="eaten"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="1" seed="3" result="w"/>
+    <feDisplacementMap in="eaten" in2="w" scale="2.4"/>
+  </filter>
+</svg>
+<div class="doc">
+  <header class="hd m">
+    <div><b>Rapport d'activité</b><span>Maxime Gaillard · maximegaillard.fr</span></div>
+    <div><b>Exercice 2026</b><span>données au 12/10/2026</span></div>
+    <div><b>Réf. MG-RA-26</b><span>version publique</span></div>
+    <div><b>Page 1</b><span>sur 1</span></div>
+  </header>
+
+  <section class="id">
+    <h2 class="sec lab" style="border:0;padding:0"><span class="m">§0</span></h2>
+    <h1>Maxime<br>Gaillard</h1>
+    <p class="lede" id="lede"></p>
+    <p class="av m"><span id="avail"></span><a href="#">Me contacter</a></p>
+    <figure><img id="ph" alt="Portrait de Maxime Gaillard"><figcaption class="m">Fig. 0 · l'auteur</figcaption></figure>
+  </section>
+
+  <h2 class="sec"><span class="m">§1</span><span>Chiffres clés</span></h2>
+  <div class="tblwrap"><table class="kpi">
+    <thead><tr><th>Indicateur</th><th class="n">Valeur</th><th class="n">Renvoi</th></tr></thead>
+    <tbody>
+      <tr><td>Application publiée sur l'App Store</td><td class="v">1</td><td class="nt">Note MG-26-01</td></tr>
+      <tr><td>Abonnés LinkedIn (plancher)</td><td class="v">5&#8239;000+</td><td class="nt">Note MG-25-05</td></tr>
+      <tr><td>Expériences terrain depuis 2022</td><td class="v">6</td><td class="nt">§3</td></tr>
+      <tr><td>Étapes cartographiées, road trip avec Claude</td><td class="v">10</td><td class="nt">Note MG-26-03</td></tr>
+      <tr><td>Kilomètres d'itinéraire calculés</td><td class="v">1&#8239;092</td><td class="nt">Note MG-26-03</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 class="sec"><span class="m">§2</span><span>Portefeuille de projets</span></h2>
+  <div class="tblwrap"><table class="pf">
+    <thead><tr><th>Réf.</th><th>Projet</th><th>Nature</th><th>Exercice</th><th>Outils</th><th>Statut</th><th></th></tr></thead>
+    <tbody id="pf"></tbody>
+  </table></div>
+
+  <h2 class="sec"><span class="m">§3</span><span>Le mot de l'auteur</span></h2>
+  <div class="mot">
+    <span></span>
+    <p class="q">«&nbsp;Je vends et je code ce que je vends.&nbsp;»</p>
+    <span></span>
+    <p>Je m'appelle Maxime. J'étudie la finance de marché à l'IESEG, mais je passe surtout mes journées à construire : des apps, des automatisations et des outils qui règlent de vrais problèmes.</p>
+    <p>Je suis développeur et conseiller à la fois. Je pense le produit, je le vends, puis je le livre moi-même, sans intermédiaire. Ce que je cherche : des projets où je peux vendre et construire, apprendre vite et voir un impact réel.</p>
+    <span></span>
+    <p class="sig m">Maxime Gaillard · Un projet livré vaut mieux que dix commencés.</p>
+  </div>
+
+  <footer class="ft m"><span>Document établi par Maxime Gaillard</span><span>Chiffres arrêtés au 12/10/2026</span><span>Réf. MG-RA-26 · p. 1</span></footer>
+</div>
+
+<div class="an" id="an" role="dialog" aria-modal="true">
+  <div class="doc">
+    <div class="an-top m"><span id="nRef"></span><button id="nClose">Fermer la note</button></div>
+    <div class="an-h">
+      <div><p class="m" id="nKick" style="color:var(--stamp)"></p><h3 id="nTitle"></h3><p class="tag" id="nTag"></p></div>
+      <div id="nStamp"></div>
+    </div>
+    <table class="an-spec" id="nSpec"></table>
+    <div class="an-figs" id="nFigs"></div>
+    <div class="an-paras" id="nParas"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+  document.getElementById("lede").textContent=SITE.lede;
+  document.getElementById("avail").textContent=SITE.avail;
+  document.getElementById("ph").src=SITE.photo;
+  var seq={};
+  PROJECTS.forEach(function(p){var y=p.date.slice(2);seq[y]=(seq[y]||0)+1;p.ref="MG-"+y+"-0"+(PROJECTS.indexOf(p)+1);});
+  var tb=document.getElementById("pf");
+  PROJECTS.forEach(function(p){
+    var tr=document.createElement("tr");tr.tabIndex=0;
+    tr.innerHTML='<td class="ref">'+p.ref+'</td><td class="pj">'+esc(p.title)+'<small>'+esc(p.tag)+'</small></td><td class="nat">'+esc(p.kind)+'</td><td class="yr m">'+p.date+'</td><td class="tl">'+esc(p.stack.join(", ")||"n.c.")+'</td><td class="sts"><span class="st '+p.stype+'">'+esc(p.status)+'</span></td><td class="go">Note →</td>';
+    tr.addEventListener("click",function(){openN(p);});
+    tr.addEventListener("keydown",function(e){if(e.key==="Enter")openN(p);});
+    tb.appendChild(tr);
+  });
+  function stamp(p){
+    var t=p.status.toUpperCase().replace(" · APP STORE",""),w=Math.max(220,t.length*19+60);
+    return '<svg class="stamp" width="'+(w+20)+'" height="130" viewBox="0 0 '+(w+20)+' 130" aria-label="Tampon : '+esc(p.status)+'"><g filter="url(#ink)">'
+      +'<rect x="10" y="12" width="'+w+'" height="104" rx="6" fill="none" stroke="#b3261e" stroke-width="5"/>'
+      +'<rect x="19" y="21" width="'+(w-18)+'" height="86" rx="3" fill="none" stroke="#b3261e" stroke-width="1.6"/>'
+      +'<text x="'+(10+w/2)+'" y="52" text-anchor="middle" font-size="13">'+p.ref+' · '+p.date+'</text>'
+      +'<text x="'+(10+w/2)+'" y="88" text-anchor="middle" font-size="30">'+esc(t)+'</text></g></svg>';
+  }
+  function openN(p){
+    document.getElementById("nRef").textContent="Note annexe "+p.ref+" · Rapport d'activité, exercice "+p.date;
+    document.getElementById("nKick").textContent="Note "+p.ref;
+    document.getElementById("nTitle").textContent=p.title;
+    document.getElementById("nTag").textContent=p.tag;
+    document.getElementById("nStamp").innerHTML=stamp(p);
+    document.getElementById("nSpec").innerHTML='<tr><td>Nature</td><td>'+esc(p.kind)+'</td></tr><tr><td>Exercice</td><td>'+p.date+'</td></tr>'+(p.stack.length?'<tr><td>Outils</td><td>'+esc(p.stack.join(", "))+'</td></tr>':'')+'<tr><td>Statut</td><td>'+esc(p.status)+'</td></tr>'+(p.link?'<tr><td>Lien</td><td><a href="'+p.href+'">'+esc(p.link)+'</a></td></tr>':'');
+    var f=document.getElementById("nFigs");f.className="an-figs"+(p.imgs.length===1?" one":"");f.style.display=p.imgs.length?"":"none";
+    var no=PROJECTS.indexOf(p)+1;
+    f.innerHTML=p.imgs.map(function(s,k){return '<figure><img src="'+s+'" alt="'+esc(p.title)+'"><figcaption class="m">Fig. '+no+'.'+(k+1)+(p.cap&&k===0?" · "+esc(p.cap):"")+'</figcaption></figure>';}).join("");
+    document.getElementById("nParas").innerHTML=p.blocks.map(function(b,k){return '<div><span class="m">'+no+'.'+(k+1)+'</span><b>'+esc(b[0])+'</b><p>'+esc(b[1])+'</p></div>';}).join("");
+    document.getElementById("an").classList.add("open");document.body.style.overflow="hidden";
+  }
+  document.getElementById("nClose").addEventListener("click",function(){document.getElementById("an").classList.remove("open");document.body.style.overflow="";});
+  var w=wantedProject();if(w)PROJECTS.forEach(function(p){if(p.id===w)openN(p);});
+</script>
+</body></html>
