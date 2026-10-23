@@ -1,7 +1,7 @@
 /* Contenus repris tels quels d'index.html (version FR) pour les trois maquettes de directions. */
 var SITE={
   name:"Maxime Gaillard",
-  lede:"Étudiant en finance à l'IESEG. Je conçois, code et publie mes propres applications iOS. J'ai aussi cofondé une boîte de conseil IA pour les PME du transport.",
+  lede:"Étudiant en finance à l'IESEG. Je conçois, code et publie mes propres applications iOS.",
   avail:"En recherche d'un stage en vente pour l'été 2027, proche du client.",
   photo:"../img/maxime.jpg"
 };
@@ -9,9 +9,6 @@ var PROJECTS=[
   {id:"geosnap",date:"2026",stype:"live",imgs:["../img/geosnap-1.jpg","../img/geosnap-2.jpg","../img/geosnap-3.jpg"],stack:["React Native","Expo","Supabase"],href:"https://apps.apple.com/fr/app/geosnap-f56181/id6783998653",
    place:"Lille",lat:50.6330,lng:3.0586,kind:"Projet",title:"GeoSnap",tag:"Partage photo géolocalisé",status:"En ligne · App Store",link:"Voir sur l'App Store",
    blocks:[["Le problème","Nos souvenirs se perdent, coupés de l'endroit où on les a vécus."],["Ce que j'ai fait","Conçu, codé et publié l'appli en solo, de l'idée jusqu'au store."],["Le résultat","En ligne sur l'App Store, en amélioration continue."]]},
-  {id:"cg",date:"2026",stype:"go",imgs:["../img/cg-relais.jpg"],stack:["Automatisation","IA","Conseil"],href:null,
-   place:"PME du transport",lat:48.8566,lng:2.3522,kind:"Projet",title:"CG Relais",tag:"Conseil IA pour le transport",status:"En lancement",link:null,
-   blocks:[["Le problème","Les PME du transport perdent des heures sur des tâches répétitives : devis, relances, mails."],["Ce que j'ai fait","Cofondateur. On audite les process, on automatise les tâches répétitives pour faire gagner du temps, puis on accompagne dans la durée."],["Le résultat","En lancement, premières PME accompagnées."]]},
   {id:"roadtrip",date:"2026",stype:"done",imgs:["../img/roadtrip-carte.jpg"],stack:["Claude","SVG","OpenStreetMap","OSRM"],href:null,
    place:"Sofia → Kavala",lat:42.6977,lng:23.3219,kind:"Projet",title:"Road trip avec Claude",tag:"Carte web animée d'un road trip Bulgarie → Grèce",status:"Livré",link:null,
    cap:"Capture de la carte. Fond © contributeurs OpenStreetMap. Hébergements, dates et participants retirés.",
@@ -27,7 +24,7 @@ var PROJECTS=[
    blocks:[["Ce que j'ai fait","Avant les apps, j'ai livré des sites pour des PME et monté des boutiques e-commerce : tunnels de vente, marketing, acquisition."],["Le résultat","La vente et le web appris sur le terrain, avec de vrais clients."]]}
 ];
 var CV=[
-  ["2026 → auj.","Fondateur et développeur, GeoSnap · Cofondateur, CG Relais","Développement produit, conseil IA et vente."],
+  ["2026 → auj.","Fondateur et développeur, GeoSnap","Conception, développement et publication d'apps iOS."],
   ["2026","Stage, BPCE · Achats & Services","Automatisation Excel (macros) et gestion de dossiers."],
   ["2023 → 2025","Vendeur et préparateur, Manon Marée","Relation client, vente et préparation. Palaiseau."],
   ["2023","Chargé de qualité, E.Leclerc","Contrôle qualité et contenus vidéo promo. Belfort."],
